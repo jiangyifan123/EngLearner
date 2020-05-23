@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Kharna-Admin Dashboard</title>
+		
+		<!--favicon -->
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+
+		<!--Bootstrap.min css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/plugins/bootstrap/css/bootstrap.min.css">
+		
+		<!--Icons css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/css/icons.css">
+
+		<!--Style css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/css/style.css">
+
+		<!--mCustomScrollbar css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/plugins/scroll-bar/jquery.mCustomScrollbar.css">
+
+		<!--Sidemenu css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/plugins/toggle-menu/sidemenu.css">
+
+		<link rel="stylesheet" href="/static/myadmin/assets/plugins/toastr/build/toastr.css">
+		<!-- <link rel="stylesheet" href="/static/myadmin/assets/plugins/toaster/garessi-notif.css"> -->
+
+	</head>
+
+	<body class="bg-primary">
+		<div id="app">
+			<section class="section">
+				<div class="container">
+					<div class="row">
+						<div class="single-page construction-bg single-pageimage cover-image" data-image-src="/static/myadmin/assets/img/news/img14.jpg">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="wrapper wrapper2">
+										<form  class="card-body" tabindex="500" method="post" action="#" id = "card">
+											{% csrf_token %}
+											<h3>
+												注册
+												{% if error %}
+													<img id = "warning" src="{% static 'img/warning.png' %}" style="width: 12px; height: 12px;" @mouseenter = "get_error">
+												{% endif %}
+											</h3>
+											<div class="mail">
+												{% if error %}
+													<input type="email" name="email" style="border-color: #dc3545;">
+												{% else %}
+													<input type="email" name="email">
+												{% endif %}
+												<label>
+													用户名/邮箱
+												</label>
+											</div>
+											<div class="passwd">
+												{% if error %}
+													<input type="password" name="password" style="border-color: #dc3545;">
+												{% else %}
+													<input type="password" name="password">
+												{% endif %}
+												<label>密码</label>
+											</div>
+											<div class="submit">
+												<input type="submit" class="btn btn-primary btn-block" value = "注册"></a>
+											</div>
+											<p class="text-dark mb-0">已经有账号了?<a href="{% url 'myadmin_login' %}" class="text-primary ml-1">登录</a></p>
+										</form>
+										<div class="card-body border-top">
+											<a class="btn  btn-social btn-facebook btn-block"><i class="wechatIcon"></i> 微信登录</a>
+											<a class="btn  btn-social btn-google btn-block mt-2"><i class="qqIcon"></i> QQ登录</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="log-wrapper ">
+										<div class="log-wrapper text-center ">
+											<img src="/static/img/edu3.png" class="mb-2 mt-4 mt-lg-0 " alt="logo" width = "200px;" height = "100px;">
+											<p>有趣的学习模式能减少用户学习的压力，给用户带来真正的学习的乐趣。并且用形象的单词记忆方法让学生形成单词的音形义的思维模式。有效的记忆曲线方法能最有效的保证了学生记忆单词的效率。网站用著名的艾宾浩斯记忆曲线带来长期到固定的单词记忆程度，减少学生学习的不良习惯。系统有效的方法能减少学生在英语学习中走的弯路。</p>
+											<a class="btn btn-primary mt-3" href="#">Read More</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<!--Jquery.min js-->
+		<script src="/static/myadmin/assets/js/jquery.min.js"></script>
+
+		<!--popper js-->
+		<script src="/static/myadmin/assets/js/popper.js"></script>
+
+		<!--Tooltip js-->
+		<script src="/static/myadmin/assets/js/tooltip.js"></script>
+
+		<!--Bootstrap.min js-->
+		<script src="/static/myadmin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+		<!--Jquery.nicescroll.min js-->
+		<script src="/static/myadmin/assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+
+		<!--Scroll-up-bar.min js-->
+		<script src="/static/myadmin/assets/plugins/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+		<script src="/static/myadmin/assets/js/moment.min.js"></script>
+
+		<!--mCustomScrollbar js-->
+		<script src="/static/myadmin/assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+		<!--Sidemenu js-->
+		<script src="/static/myadmin/assets/plugins/toggle-menu/sidemenu.js"></script>
+
+		<!--Scripts js-->
+		<script src="/static/myadmin/assets/js/scripts.js"></script>
+
+		<script src="/static/myadmin/assets/plugins/toastr/build/toastr.min.js"></script>
+
+		{% load staticfiles %}
+		<style type="text/css">
+			.wechatIcon{
+				background-image: url({% static 'img/wechat.png' %});
+				width: 32px;
+				height: 32px;
+				display: inline-block;
+				background-position: center center;
+				background-size: 16px, 16px;
+				background-repeat: no-repeat;
+			}
+			.qqIcon{
+				background-image: url({% static 'img/QQ.png' %});
+				width: 32px;
+				height: 32px;
+				display: inline-block;
+				background-position: center center;
+				background-size: 16px, 16px;
+				background-repeat: no-repeat;
+			}
+		</style>
+		<script src="/static/myadmin/assets/js/vue.min.js"></script>
+		<script type="text/javascript">
+			var error = "{{ error }}";
+			new Vue({
+				el: "#card",
+				methods:{
+					get_error: function(){
+						toastr.info(error);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

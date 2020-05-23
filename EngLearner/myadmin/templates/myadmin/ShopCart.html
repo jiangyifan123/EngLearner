@@ -1,0 +1,121 @@
+{% extends 'myadmin/empty_page.html' %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">页面</a></li>
+    <li class="breadcrumb-item active" aria-current="page">购物车</li>
+</ol>
+
+<div class="section-body ">
+
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="card m-b-20">
+				<div class="card-header ">
+					<h4>购物车</h4>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive " id = "product_list">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>产品名</th>
+									<th>价格</th>
+									<th>类型</th>
+									<th>语言考试</th>
+									<th>执行</th>
+								</tr>
+							</thead>
+							{% for product in products %}
+								<tbody>
+									<tr  id = "{{product.id}}">
+										<td>{{product.product_name}}</td>
+										<td><span>${{product.product_price}}</span></td>
+										<td><span>{{product.product_style}}</span></td>
+										<td><span>{{product.product_type}}</span></td>
+										<td>
+											<a @click="del_cart({{product.id}}, {{product.product_price}})" class="btn btn-danger btn-sm text-white" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+										</td>
+									</tr>
+								</tbody>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="card ">
+				<div class="card-header ">
+					<h4>订单</h4>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td><span>总数</span></td>
+									<td class="text-right text-muted"><span id = "total1">${{total}}</span></td>
+								</tr>
+								<tr>
+									<td><span>订单总数</span></td>
+									<td><h2 class="price text-right" id = "total2">${{total}}</h2></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<form class="text-center" action = "{% url 'order' %}" method = "get">
+						<input class="btn btn-primary mt-2" type="submit" value="结算">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+<script src="/static/myadmin/assets/js/axios.min.js"></script>
+<script src="/static/myadmin/assets/js/qs.min.js"></script>
+<script src="/static/myadmin/assets/js/vue.min.js"></script>
+<script>
+$(function(e) {
+	$('#example').DataTable();
+} );
+function getCookie (name) {
+	var value = '; ' + document.cookie;
+	var parts = value.split('; ' + name + '=');
+	if (parts.length === 2) return parts.pop().split(';').shift()
+};
+var app = new Vue({
+	el: "#product_list",
+	methods:{
+		del_cart: function(id, price){
+			axios({
+				url: '{% url 'del_cart' %}',
+				method: 'post',
+				responseType: 'json', // 默认的
+				data: Qs.stringify({
+					'id': id,
+					'price': price,
+				}),
+				headers: {
+					'X-CSRFToken': getCookie('csrftoken')
+				}
+			})
+			.then(function (response) {
+				if(response.data['status'] == 'success'){
+					var tr = document.getElementById(id);
+					tr.style = "display:none;";
+					var num = parseInt(document.getElementById('total1').innerHTML.replace('$', '')) - parseInt(price);
+					document.getElementById('total1').innerHTML = "$" + num;
+				}
+				else if(response.data['status'] == 'Fail'){
+					alert('已经删除，请勿重复删除');
+				}
+			})
+		}
+	}
+})
+</script>
+{% endblock %}

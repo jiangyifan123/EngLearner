@@ -1,0 +1,115 @@
+{% include 'mainsys/empty_page.html' %}
+
+{% block extra_head %}
+    <meta charset="utf-8">
+    <meta name="view_tag" content=""/>
+    <meta name="view_tag_name" content=""/>
+    <meta name="csrf-token" content="DAEBLrpt928MInATtKLwqbDfdoBCQUVAQHFL1Gei" />
+    <meta name="baidu-site-verification" content="EIC5KnfC4z" />
+        <link rel="stylesheet" href="/static/tofel/code.kmf.com/dist/common/css/channel/common_w.css-202003311539.css" tppabs="https://code.kmf.com/dist/common/css/channel/common_w.css?202003311539"
+          charset="utf-8" type="text/css"/>
+         <link type="text/css" rel="stylesheet" href="/static/tofel/code.kmf.com/dist/new_toefl/css/channel/index/new-index.css-202003311539.css" tppabs="https://code.kmf.com/dist/new_toefl/css/channel/index/new-index.css?202003311539"/>
+     <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+{% endblock %}
+
+{% block content %}
+
+    
+</div>
+                                                                      
+    <div class="index-banner">
+        <!--左侧装饰-->
+        <div class="left-decorations"></div>
+        <!--内容-->
+        <div class="index-main">
+            <!--文字信息-->
+            <div class="banner-details">
+                <div class="banner-title">科学备考方式助你高效备考</div>
+                <div class="banner-subtitle">个性化单词测试，背单词方法。可自定义词库。简洁有效的听力练习，写作练习，英语文章阅读。</div>
+                {% if not request.user.is_authenticated %}
+                    <div class="login-buttons">
+                        <div class="login-button js-kmf-login hollow-button"><a href = "{% url 'myadmin_login' %}">登录</a></div>
+                        <a href="{% url 'myadmin_register' %}" tppabs="https://toefl.kmf.com/account/passportregister" class="sign-button solid-button">注册</a>
+                    </div>
+                {% endif %}
+            </div>
+            <!--装饰图-->
+            <div class="banner-decorations"></div>
+        </div>
+        <!--右侧装饰-->
+        <div class="right-decorations-1"></div>
+        <div class="right-decorations-2"></div>
+    </div>
+    <ul class="index-container-lists">
+        <li class="index-cont-list">
+            <div class="index-main">
+                <div class="main-title">在线练习</div>
+                <div class="main-subtitle">科学备考方式助你高效备考</div>
+                <!---->
+                <div class="exam-box">
+                    <ul class="exam-mode-lists g-clearfix">
+                        <li class="exam-mode-list high">
+                            <div class="mode-titles">
+                                <div class="mode-title-detail">
+                                    <i class="mode-title-icon listen index-icons"></i>
+                                    <span class="mode-title-msg">听力</span>
+                                </div>
+                                <a href="{% url 'listen' %}" tppabs="https://toefl.kmf.com/listen/ets/order" class="do-exam-link">
+                                    <i class="do-exam-icon index-icons"></i>
+                                    <em class="do-exam-msg">去做题</em>
+                                </a>
+                            </div>
+                            <div class="exam-mode-detail">历年真题， 科学精听方法，积分制度，自定义测试。</div>
+                        </li>
+                        <li class="exam-mode-list high">
+                            <div class="mode-titles">
+                                <div class="mode-title-detail">
+                                    <i class="mode-title-icon read index-icons"></i>
+                                    <span class="mode-title-msg">阅读</span>
+                                </div>
+                                <a href="{% url 'read' %}" tppabs="https://toefl.kmf.com/read/ets/order" class="do-exam-link">
+                                    <i class="do-exam-icon index-icons"></i>
+                                    <em class="do-exam-msg">去做题</em>
+                                </a>
+                            </div>
+                            <div class="exam-mode-detail">历年真题，精选国外新闻阅读 ，自定义阅读测试</div>
+                        </li>
+                        <li class="exam-mode-list">
+                            <div class="mode-titles">
+                                <div class="mode-title-detail">
+                                    <i class="mode-title-icon spoken index-icons"></i>
+                                    <span class="mode-title-msg">单词</span>
+                                </div>
+                                <a href="{% url 'words' %}" tppabs="https://toefl.kmf.com/speak/ets/order" class="do-exam-link">
+                                    <i class="do-exam-icon index-icons"></i>
+                                    <em class="do-exam-msg">去做题</em>
+                                </a>
+                            </div>
+                            <div class="exam-mode-detail">按照类型测试单词，可测试自定义单词词库</div>
+                        </li>
+                        <li class="exam-mode-list">
+                            <div class="mode-titles">
+                                <div class="mode-title-detail">
+                                    <i class="mode-title-icon write index-icons"></i>
+                                    <span class="mode-title-msg">写作</span>
+                                </div>
+                                <a href="{% url 'write' %}" tppabs="https://toefl.kmf.com/write/ets/order" class="do-exam-link">
+                                    <i class="do-exam-icon index-icons"></i>
+                                    <em class="do-exam-msg">去做题</em>
+                                </a>
+                            </div>
+                            <div class="exam-mode-detail">历年真题，按时做题，养成良好习惯</div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+      <script type="text/javascript">
+    window.kmfGlobalConf = {
+        prefix : "//",
+        env : "online"
+    };
+{% endblock %}

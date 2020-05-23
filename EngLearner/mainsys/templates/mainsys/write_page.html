@@ -1,0 +1,128 @@
+{% extends 'mainsys/empty_page.html' %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+<section class="section">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Forms</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Advanced Form Elements</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card overflow-hidden">
+                <div class="card-header">
+                    <h4>写作表</h4>
+                </div>
+                <div class="card-body" id = "word_set">
+                    <form method = "post" action = "{% url 'write_detail' %}" id = "myform">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group overflow-hidden">
+                                    <label>语言考试类别</label>
+                                    <select class="form-control select2 w-100" @change="get_msg" id = "type_select">
+                                        <option selected="selected"></option>
+                                        <option>四级</option>
+                                        <option>六级</option>
+                                        <option>托福</option>
+                                        <option>GRE</option>
+                                        <option>雅思</option>
+                                        <option>SAT</option>
+                                        <option>考研</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group overflow-hidden">
+                                    <label>名字</label>
+                                    <select class="form-control select2 w-100" id = "write_select">
+                                        
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div style = "text-align: center;" class="col-md-12">
+                                <input type = "hidden">
+                                <a @click = "send_form" class="btn btn-primary m-b-5 m-t-5" style = "color: #f6f6f9;">开始练习写作</a>
+                                <a href = "{% url 'write_add' %}" class="btn btn-primary m-b-5 m-t-5" style = "color: #f6f6f9;">添加写作文章</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+{% endblock %}
+
+{% block extra_javascript %}
+<script src="/static/myadmin/assets/js/axios.min.js"></script>
+<script src="/static/myadmin/assets/js/qs.min.js"></script>
+<script src="/static/myadmin/assets/js/vue.min.js"></script>
+<script>
+	function getCookie (name) {
+        var value = '; ' + document.cookie;
+        var parts = value.split('; ' + name + '=');
+        if (parts.length === 2) return parts.pop().split(';').shift()
+    };
+    var app = new Vue({
+        el: "#word_set",
+        methods:{
+            get_msg: function(){
+                var type_select = document.getElementById('type_select');
+                var index = type_select.selectedIndex;
+                var text = type_select.options[index].text;
+                axios({
+                    url: '{% url 'write' %}',
+                    method: 'post',
+                    responseType: 'json', // 默认的
+                    data: Qs.stringify({
+                        'text': text, 
+                    }),
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                })
+                .then(function (response) {
+                    if(response.data['status'] == 'success'){
+                        var data = response.data['data'];
+                        var write_select = document.getElementById('write_select');
+                        var children = write_select.childNodes;
+                        for(var i = children.length - 1; i >= 0; i--){
+                            write_select.removeChild(children[i]);
+                        }
+                        for(j = 0, len = data.length; j < len; j++){
+                            var txt = data[j];
+                            var op = document.createElement("option");
+                            op.text = txt;
+                            write_select.appendChild(op);
+                        }
+                    }
+                    else if(response.data['status'] == 'redirect'){
+                        window.location.href = response.data['url'];
+                    }
+                });
+            },
+            send_form: function(){
+                var write_select = document.getElementById('write_select');
+                var pos = write_select.selectedIndex;
+                var tmp = document.createElement("input");
+                tmp.type = "hidden";
+                tmp.name = "txt";
+                tmp.value = write_select.options[pos].text;
+                var form = document.getElementById('myform');
+                form.appendChild(tmp);
+                form.submit();
+            }
+        }
+    })
+</script>
+{% endblock %}

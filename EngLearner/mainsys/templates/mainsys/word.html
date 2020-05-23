@@ -1,0 +1,159 @@
+
+
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset=UTF-8"utf-8">
+<title>词汇练习</title>
+<link rel="stylesheet" charset="utf-8" href="/static/myadmin/assets/css/common_w.css-202003311537.css" tppabs="https://code.kmf.com/dist/common/css/channel/common_w.css?202003311537" type="text/css"/>
+
+
+
+        <link rel="stylesheet"  href="/static/myadmin/assets/css/vocabulary.css-202003311537.css" tppabs="https://code.kmf.com/dist/toefl/css/channel/word/vocabulary.css?202003311537" type="text/css" />
+    </head>
+
+    <body>
+        <input type="hidden" id="GlobeLogin" value ="0"/>
+        <div class="g-kmf-wrapper"  id = "words_list">
+            <div class="word-process-wrap new-process-word">
+                <!-- 不可点击状态 not-use-btn | 可点击状态 is-use-btn -->
+                <a href="javascript:;" class="click-button is-use-btn btn-prev g-mod-shadow" @click = "to_left">
+                    <span class="left-btn"></span>
+                </a>
+                <a href="javascript:;" class="click-button is-use-btn btn-next g-mod-shadow" @click = "to_right">
+                    <span class="right-btn"></span>
+                </a>
+                <input type="hidden" id="options_str" value="abandon,abhor,abnormal,abroad,abrupt,absent,absorb,abstract,absurd,abundant">
+                <div class="process-wrapll g-mod-shadow">
+                    <!-- 占位 -->
+                    <p class="list-schedule-wrap g-hide"></p>
+                    <div class="scroll-wrapall">
+                        <input type="hidden" id="sheet_id" name="sheet_id" value="755" />
+                        <input type="hidden" id="u" name="u" value="u1586245402895624" />
+                        <input type="hidden" id="next_section" name="next_section" value="2" />
+                        <input type="hidden" id="current_section" name="current_section" value="1" />
+                        <input type="hidden" id="mode" name="mode" value="new" />
+                        <input type="hidden" id="step" name="step" value="1" />
+                        <input type="hidden" id="current_step" name="current_step" value="0" /><!--0学习，1回忆-->
+                        <input type="hidden" id="is_last" name="is_last" value="4" /><!--记忆学习阶段：2 最后一组，发请求:学习记录；4 每组，发请求：中断-->
+                        <div class="scroll-wrapall-overflow g-clearfix">
+                            <div class="scroll-wrapall-overflow g-clearfix">
+                                {% for word in words %}
+                                    <div class="scroll-wrapall-list" style = "display: none;" id = "{{forloop.counter}}">
+                                        <div class="subject-top-stage">
+                                            <p class="word-list-stage">记忆学习阶段 - 第{[now]} - {{pos2}}个单词 
+                                        </div>
+                                        <div class="subject-top-title g-clearfix">
+                                            <div class="subject-left-content">
+                                                <div class="standard-audio g-clearfix"> <span class="standard-title">{{word.word}}</span>
+                                                    <span class="standard-content">{{word.symthm}}</span> 
+                                                    <audio controls src="http://dict.youdao.com/dictvoice?audio={{word.word}}" id = "player_{{forloop.counter}}"></audio>
+                                                </div>
+                                                <p class="standard-info">{{word.chinese}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="subject-down-example">
+                                            <div class="example-list g-clearfix"> <span class="example-order-num">1.</span>
+                                                <div class="example-content">
+                                                    <p class="en-example">{{word.analyzation}}</p>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            </div>
+                            </div>
+                <div class="total-learn-situation">
+                    <span class="total-situation">总体学习情况</span>
+                    <div class="total-progress-bar" data-iNow="1" data-iNowTotal="10" data-total="50" data-rem="0" data-for="0" data-learn="1">
+                        <span class="is-orange js-kmf-tips" data-msg='"记忆学习"完成，尚未进行"回忆复习"的单词' data-tipsclass="word-tips"  style="width: 2%; left:0%;" ref = "process_left"><i>{[pos]}</i></span>
+                        <span class="is-white js-kmf-tips" data-msg="还没有开始学习的单词" data-tipsclass="word-tips"  style="width: 98%; left:2%;" ref = "process_right"><i>{[rest]}</i></span>
+                    </div>
+                    <span class="total-vocab">共{[len]}个单词</span>
+                </div>
+                </div>
+                <p class="word-process-prompts">操作指南：按 <i>A</i> / <i>◀</i> 切换到上一个单词，按 <i>D</i> / <i>▶</i> 切换到下一个单词，按 <i>Space</i> 播放美音, 按 <i>回车</i> / <i>Enter</i> 进入单词测试, 按 <i>ESC</i> 退出</p>
+            </div>
+        </div>
+    </body>
+</html>
+<script src="/static/myadmin/assets/js/vue.min.js"></script>
+<script>
+var app = new Vue({
+    el: "#words_list",
+    delimiters: ['{[', ']}'],
+    data:{
+        now: parseInt({{pos}}),
+        pos: 1,
+        len: parseInt({{pos2}}),
+        rest: 0,
+        gap: 0,
+    },
+    mounted: function(){
+        this.init();
+    },
+    methods:{
+        init: function(){
+            this.len = this.len - this.now;
+            var now = document.getElementById(this.pos);
+            now.style = "";
+            this.rest = this.len - this.pos;
+            this.gap = Math.round(100 / this.len);
+            document.addEventListener("keydown", this.watchSpace);
+        },
+        play_video: function(id){
+            var player = document.getElementById("player_" + id);
+            player.play();
+        },
+        watchSpace: function(e){
+            var keyNum = window.event? e.keyCode: e.which;
+            if(keyNum == 32 || keyNum == 83 || keyNum == 40){
+                this.play_video(this.pos);
+            }
+            else if(keyNum == 39 || keyNum == 65){
+                this.to_right();
+            }
+            else if(keyNum == 37 || keyNum == 68){
+                this.to_left();
+            }
+            else if(keyNum == 13 && this.pos == this.len){
+                this.to_test();
+            }
+            else if(keyNum == 27){
+                window.location = "{% url 'lesson_index' %}";
+            }
+        },
+        to_right: function(){
+            if(this.pos < this.len){
+                var now = document.getElementById(this.pos);
+                now.style = "display: none;";
+                this.pos = this.pos + 1;
+                var tmp = document.getElementById(this.pos);
+                tmp.style = "";
+                this.rest = this.len - this.pos;
+                this.change_process();
+            }
+        },
+        to_left: function(){
+            if(this.pos > 1){
+                var now = document.getElementById(this.pos);
+                now.style = "display: none;";
+                this.pos = this.pos - 1;
+                var tmp = document.getElementById(this.pos);
+                tmp.style = "";
+                this.rest = this.len - this.pos;
+                this.change_process();
+            }
+        },
+        change_process: function(){
+            this.$refs.process_left.style.width = this.pos * this.gap + "%";
+            this.$refs.process_right.style.left = this.pos * this.gap + "%";
+            this.$refs.process_right.style.width = (100 - this.pos * this.gap) + "%";
+        },
+        to_test: function(){
+            window.location = "{% url 'test' %}" + '?pos=' + parseInt(this.now);
+        }
+    }
+})
+</script>

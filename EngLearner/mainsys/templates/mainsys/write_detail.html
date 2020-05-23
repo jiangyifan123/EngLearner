@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+
+         <link type="text/css" rel="stylesheet" href="/static/mainsys/css/write-article.css-202004091002.css" tppabs="https://code.kmf.com/dist/new_toefl/css/channel/exercises/write/write-article.css?202004091002"/>
+</head>
+<body>
+    <!--容器-->
+<div class="mocks-container js-mocks-container  fullScreen " id = "container">
+    <!--顶部-->
+    <div class="mocks-header">
+        <!--左侧信息-->
+        <div class="header-left">
+            <!--<p class="header-logo">toefl.kmf.com</p>-->
+            <p class="header-topic">写作练习</p>
+            <!--按钮容器-->
+            <div class="header-buttons">
+                <!--<div class="pause-test rectangle-button mocks-icons" id="js-pause-test"></div>-->
+                            </div>
+        </div>
+        <!--右侧信息-->
+        <div class="header-right examination">
+            <div class="header-buttons">
+                <a href="javascript:if(confirm('https://feedback.kmf.com/help/feedback?channel=3001  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://feedback.kmf.com/help/feedback?channel=3001'" tppabs="https://feedback.kmf.com/help/feedback?channel=3001" class="feedback-btn rectangle-button feedback-icons mr8 fl" target="_blank" id="js-feedback-btn"></a>
+            <!--纠错按钮-->
+                <!--按钮容器-->
+                <input type = "button" @click = "quit" class="quit-button rectangle-button result-icons fl mr8" id="js-quit" value = "退出"></input>
+                <input type = "submit" @click = "send_to" class="continue-button rectangle-button mocks-icons fl mr8" id="js-continue"></input>
+                            </div>
+
+            <!--倒计时(hideTime)-->
+            <div class="time-box" id="js-time-box">
+                <span class="time-countdown" id="js-count-down">00:00:00</span>
+                <div class="time-ctrl mocks-icons" id="js-hide-time"></div>
+            </div>
+        </div>
+        <!--题号-->
+        <div class="question-part">{{Write.title}}</div>
+    </div>
+    <!--主体-->
+    <div class="mocks-main" id="js-mocks-main">
+            <div class="write-main">
+                <div class="write-top">
+{{Write.top}}
+                </div>
+                <form method = "post" action = "{% url 'save_write' %}" id = "myform">
+                {% csrf_token %}
+                <div class="write-box">
+                    <textarea class="write-left fl js-translate-content" style = "font-size: 16px;" readonly>
+{{Write.problem}}
+                    </textarea>
+                    <textarea class="write-right fr" style = "font-size: 20px;" v-model = "text" @input = "get_lent" name = "content">
+                    
+                    </textarea>
+                </div>
+                <input type = "hidden" value = {{Write.id}} name = "id">
+                </form>
+            </div>
+    </div>
+    <!--底部-->
+    <div class="mocks-footer" id="js-mocks-footer">
+        <span class="footer-msg">字数:{[len]}</span>
+    </div>
+
+</div>
+<script src="/static/myadmin/assets/js/vue.min.js"></script>
+<script>
+{% if error %}
+    var error = "{{error}}";
+    if(error.length != 0)
+        alert(error);
+{% endif %}
+var app = new Vue({
+    el: "#container",
+    delimiters: ['{[', ']}'],
+    data:{
+        text: "",
+        len: 0,
+    },
+    methods:{
+        quit: function(){
+            window.location = "{% url 'lesson_index' %}";
+        },
+        send_to: function(){
+            document.getElementById('myform').submit();
+        },
+        get_lent: function(){
+            if(this.text.length > 800){
+                this.text = this.text.slice(0, 800);
+            }
+            this.len = this.text.length;
+        }
+    }
+});
+</script>
+  </body>
+</html>

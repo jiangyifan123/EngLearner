@@ -1,0 +1,104 @@
+{% extends 'mainsys/empty_page.html' %}
+
+{% block extra_header %}
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Kharna-Admin Dashboard</title>
+
+		<!--Favicon -->
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+
+		<!--Bootstrap.min css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+		<!--Icons css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/css/icons.css">
+
+		<!--Style css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/css/style.css">
+
+		<!--mCustomScrollbar css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/plugins/scroll-bar/jquery.mCustomScrollbar.css">
+
+		<!--Sidemenu css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/plugins/toggle-menu/sidemenu.css">
+
+		<!--Bootstrap-wysihtml5 css-->
+		<link rel="stylesheet" href="/static/myadmin/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+{% endblock extra_header %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Forms</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Form Editor</li>
+</ol>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>创建新帖子</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" action = "{% url 'new_page' %}">
+                    {% csrf_token %}
+                    <label>标题:</label>
+                    <input class="form-control input-lg" type="text" placeholder="请输入标题" name = "title">
+                    <br>
+                    <label>内容:</label>
+                    <textarea id="elm1" name="area"></textarea>
+                    <div class="form-group mb-0 mt-2 row justify-content-end">
+                        <div class="col-md-7">
+                            <button type="submit" class="btn btn-info">提交</button>
+                            <button type="submit" class="btn btn-primary">取消并返回</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+
+		<!--Jquery.min js-->
+		<script src="/static/myadmin/assets/js/jquery.min.js"></script>
+
+		<!--popper js-->
+		<script src="/static/myadmin/assets/js/popper.js"></script>
+
+		<!--Tooltip js-->
+		<script src="/static/myadmin/assets/js/tooltip.js"></script>
+
+		<!--Bootstrap.min js-->
+		<script src="/static/myadmin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+		<!--Jquery.nicescroll.min js-->
+		<script src="/static/myadmin/assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+
+		<!--Scroll-up-bar.min js-->
+		<script src="/static/myadmin/assets/plugins/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+
+		<!--Sidemenu js-->
+		<script src="/static/myadmin/assets/plugins/toggle-menu/sidemenu.js"></script>
+
+		<!--mCustomScrollbar js-->
+		<script src="/static/myadmin/assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+		<!--ckeditor js-->
+		<script src="/static/myadmin/assets/plugins/tinymce/tinymce.min.js"></script>
+
+		<!--Scripts js-->
+		<script src="/static/myadmin/assets/js/scripts.js"></script>
+
+		<!--Scripts js-->
+		<script src="/static/myadmin/assets/js/formeditor.js"></script>
+        <script>
+            {% if error %}
+                alert("{{error}}");
+            {% endif %}
+        </script>
+{% endblock %}

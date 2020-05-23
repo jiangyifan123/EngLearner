@@ -1,0 +1,134 @@
+{% extends 'mainsys/empty_page.html' %}
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="app-content">
+	<section class="section">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">主页</a></li>
+			<li class="breadcrumb-item active" aria-current="page">商城</li>
+		</ol>
+
+		<div class="section-body ">
+
+			<div class="row">
+				<div class="col-md-12 col-lg-4 col-xl-3">
+					<div class="card">
+						<div class="card-header">
+							<h4>筛选</h4>
+						</div>
+						<div class="card-body" id = "search_select">
+						<form action = "#" method = "POST" ref = "shop_form">
+							{% csrf_token %}
+							<div class="form-group">
+								<label class="form-label">类别</label>
+								<select name="style" id="select-beast" class="form-control custom-select">
+									<option value="单词">单词</option>
+									<option value="阅读">阅读</option>
+									<option value="听力">听力</option>
+									<option value="写作">写作</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="form-label">语言考试类别</label>
+								<select name="type" id="select-beast2" class="form-control custom-select">
+									<option value="四级">四级</option>
+									<option value="六级">六级</option>
+									<option value="托福">托福</option>
+									<option value="GRE">GRE</option>
+									<option value="SAT">SAT</option>
+									<option value="雅思">雅思</option>
+								</select>
+							</div>
+							<a class="btn btn-primary" href="#" @click = "search">搜索</a>
+						</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-lg-8 col-xl-9">
+					<div class="row product-list" id = "product_list">
+						{% for product in Products %}
+							<div class="col-lg-6 col-xl-4 col-md-6">
+								<div class="card">
+									<div class="pro-img-box">
+										<img src="assets/img/products/1.jpg" alt="">
+										<div class="shop-details">
+											<a class="adtocart" @click = "send_cart({{product.id}})">
+												<i class="fa fa-shopping-cart"></i>
+											</a>
+											<a href="shop-cart.html" class="adtocart">
+												<i class="fa fa-eye"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="card-body text-center">
+										<h4>
+											<a href="shop-cart" class="pro-title">
+												{{product.product_name}}
+											</a>
+										</h4>
+										<p class="price">${{product.product_price}}</p>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+<script src="/static/myadmin/assets/js/axios.min.js"></script>
+<script src="/static/myadmin/assets/js/qs.min.js"></script>
+<script src="/static/myadmin/assets/js/vue.min.js"></script>
+<script>
+$(function(e) {
+	$('#example').DataTable();
+} );
+function getCookie (name) {
+	var value = '; ' + document.cookie;
+	var parts = value.split('; ' + name + '=');
+	if (parts.length === 2) return parts.pop().split(';').shift()
+};
+var app = new Vue({
+	el: "#search_select",
+	methods:{
+		search: function(){
+			this.$refs.shop_form.submit();
+		}
+	}
+})
+var app2 = new Vue({
+	el: "#product_list",
+	methods:{
+		send_cart: function(id){
+			axios({
+				url: '{% url 'add_cart' %}',
+				method: 'post',
+				responseType: 'json', // 默认的
+				data: Qs.stringify({
+					'id': id 
+				}),
+				headers: {
+					'X-CSRFToken': getCookie('csrftoken')
+				}
+			})
+			.then(function (response) {
+				if(response.data['status'] == 'success'){
+					alert('添加成功');
+				}
+				else if(response.data['status'] == 'Fail'){
+					alert('已经添加，请勿重复添加');
+				}
+			})
+		}
+	}
+})
+</script>
+{% endblock %}

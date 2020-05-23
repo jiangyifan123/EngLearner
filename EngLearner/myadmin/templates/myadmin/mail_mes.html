@@ -1,0 +1,87 @@
+{% extends 'myadmin/empty_page.html' %}
+{% block extra_head %}
+<style type="text/css">
+	.mail_icon{
+		background: url(/static/myadmin/assets/icon/mail.png);
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		background-position: center center;
+		background-size: 60px 60px;
+	}
+</style>
+{% endblock %}
+{% block content %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">UI Element</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Mail-Inbox</li>
+</ol>
+<div class="email-app mb-4">
+	<nav class="p-0" id = "select_list">
+		<div class="card-body">
+			<i class="mail_icon"></i>
+		</div>
+		<ul class="nav">
+			<li class="nav-item">
+				<a class="nav-link mr-0 border-top" href="#"><i class="fa fa-inbox"></i> 未读 </a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link mr-0" href="#"><i class="fa fa-star"></i> 已读</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link mr-0" href="#"><i class="fa fa-rocket"></i> 回收站</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="inbox p-0">
+		<div class="card-body">
+			<div class="mailsearch mb-0">
+
+			</div>
+			<div class="toolbar d-none d-lg-block ">
+				<div class="btn-group mt-3 ">
+					<button type="button" class="btn btn-sm btn-light">
+						<span class="fa fa-envelope"></span>
+					</button>
+				</div>
+				<button type="button" class="mt-3 btn btn-sm btn-light">
+					<span class="fa fa-trash-o"></span>
+				</button>
+				<div class="btn-group float-right mt-3 d-none d-lg-block">
+					<button type="button" class="btn btn-sm btn-light">
+						<span class="fa fa-chevron-left"></span>
+					</button>
+					<button type="button" class="btn btn-sm btn-light">
+						<span class="fa fa-chevron-right"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		 <ul class="mail_list list-group list-unstyled" id = "item_list">
+		 	{% for msg in unread %}
+			<li class="list-group-item">
+				<div class="media">
+					<div class="pull-left">
+						<div class="controls">
+							<div class="checkbox">
+								<input type="checkbox" id="basic_checkbox_1">
+								<label for="basic_checkbox_1"></label>
+							</div>
+							<a href="javascript:void(0);" class="favourite text-muted hidden-sm-down" data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
+						</div>
+					</div>
+					<div class="media-body">
+						<div class="media-heading">
+							<a href="#" class="mr-2">{{msg.actor}}</a>
+							<small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">{{msg.timestamp}}</time><i class="zmdi zmdi-attachment-alt ml-2"></i> </small>
+						</div>
+						<p class="msg">{{msg.description}}</p>
+					</div>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'mainsys/empty_page.html' %}
+
+{% block content %}
+<section class="section">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Elements</li>
+    </ol>
+
+    <div class="section-body">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>{{data.title}}</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if data.mp3_url %}
+                            <audio controls src="{{data.mp3_url}}"></audio>
+                        {% endif %}
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">中英混合</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">英文</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">中文</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content  p-3" id="myTabContent">
+                            <div class="tab-pane fade show active p-0" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                {{combine|safe}}
+                            </div>
+                            <div class="tab-pane fade p-0" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                {{data.chinese}}
+                            </div>
+                            <div class="tab-pane fade p-0" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                {{data.eng}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+</section>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'mainsys/empty_page.html' %}
+
+{% block extra_head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>剑鱼论坛 _ 技术论坛官方网站 _ JianYuLunTan</title>
+    <meta name="keywords" content="剑鱼论坛,论坛源码,论坛程序,bbs论坛系统,免费论坛,php论坛,论坛下载,技术论坛,it技术论坛">
+    <meta name="description" content="剑鱼论坛是鲶鱼CMS官方公开发布的一款bbs论坛系统，剑鱼论坛程序是完全开源免费的论坛源码，是一款轻量快速的php论坛源码，您可以到剑鱼官方论坛下载最新版论坛程序。源码许可使用CCL公共许可证发布，允许免费商用。如果您要建论坛类网站，那么剑鱼是您论坛网站建设的最佳选择。剑鱼bbs也是您探讨IT技术的首选论坛，欢迎来到剑鱼技术论坛(JianYuLunTan)。">
+    <link rel="icon" href="http://jianyuluntan.com/public/common/images/favicon.ico">
+    <link rel="stylesheet" href="/static/public/theme/default/css/jianyu.css" tppabs="http://jianyuluntan.com/public/theme/default/css/jianyu.css">
+    <script src="/static/public/common/js/jquery.min.js" tppabs="http://jianyuluntan.com/public/common/js/jquery.min.js"></script>
+{% endblock%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+                {% for page in pages %}
+                <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h5>
+                        <a href="{% url 'detail_page' page.id %}" tppabs="http://jianyuluntan.com/post/1.html" class="text-info text-decoration-none">{{page.title}}</a>                    </h5>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;{{page.username}}&nbsp;发表于&nbsp;{{page.Date}}
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;浏览人数:{{page.views}}&nbsp;                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;{{page.last_view}}                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;{{page.comment_num}}                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>剑鱼论坛</h6>
+                            <h6>LV&nbsp;4&nbsp;<span class="text-info">[小学]</span></h6>
+                            <h6>最后在线：18小时前</h6>
+                            <h6>加入时间：130天前</h6>
+                            <h6>主帖：77&nbsp;&nbsp;跟帖：29</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% include "Forum/rightside.html" %}
+    </div>
+</div>
+<div><a class="text-light" id="jianyuluntan" href="index.htm" tppabs="http://jianyuluntan.com/">剑鱼论坛</a><script src="/static/public/common/js/push.js" tppabs="http://jianyuluntan.com/public/common/js/push.js"></script></div>
+<script src="/static/public/theme/default/js/jianyu.js" tppabs="http://jianyuluntan.com/public/theme/default/js/jianyu.js"></script>
+{% endblock content %}
+

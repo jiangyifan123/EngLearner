@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% include 'myadmin/header.html' %}
+		{% block extra_head %}
+
+		{% endblock %}
+	</head>
+
+	<body class="app ">
+
+		<div id="spinner"></div>
+
+		<div id="app">
+			<div class="main-wrapper" >
+				{% include 'myadmin/menu_topper.html' %}
+				{% block content %}
+
+				{% endblock %}
+				{% include 'myadmin/footer.html' %}
+			</div>
+		</div>
+		{% include 'myadmin/js.html' %}
+		{% block extra_javascript %}
+		{% endblock %}
+	</body>
+</html>
+

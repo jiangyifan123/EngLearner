@@ -1,0 +1,71 @@
+{% extends 'mainsys/empty_page.html' %}
+
+{% block content %}
+<div id = "update_readbook">
+<section class="section">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">在线课堂</a></li>
+        <li class="breadcrumb-item active" aria-current="page">阅读</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>经济学人阅读</h4>
+                </div>
+                <div class="card-body" style = "height: auto; width: 1500px;">
+                    {% for readbook in readbooks %}
+                        <div style = "width: 110px; height: 150px; float:left;" @click = "to_detail({{readbook.id}});">
+                            <a href = "#">
+                                <img src = "/static/mainsys/img/economic.jpg" style = "width: 100px; height: 125px;">
+                                <span>{{readbook.title}}</span>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+<script src="/static/myadmin/assets/js/axios.min.js"></script>
+<script src="/static/myadmin/assets/js/qs.min.js"></script>
+<script src="/static/myadmin/assets/js/vue.min.js"></script>
+<script>
+function getCookie (name) {
+    var value = '; ' + document.cookie;
+    var parts = value.split('; ' + name + '=');
+    if (parts.length === 2) return parts.pop().split(';').shift()
+};
+var app = new Vue({
+    el: "#update_readbook",
+    mounted: function(){
+        this.update_readbook();
+    },
+    methods:{
+        update_readbook: function(){
+            axios({
+                url: '{% url 'update_read' %}',
+                method: 'post',
+                responseType: 'json', // 默认的
+                data: Qs.stringify({
+                    'text': '123', 
+                }),
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+            .then(function (response) {
+                console.log(response.data['status']);
+            });
+        },
+        to_detail: function(id){
+            window.location = "{% url 'read_detail' %}" + "?id=" + id;
+        }
+    }
+})
+</script>
+{% endblock %}

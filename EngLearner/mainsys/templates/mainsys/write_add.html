@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+
+         <link type="text/css" rel="stylesheet" href="/static/mainsys/css/write-article.css-202004091002.css" tppabs="https://code.kmf.com/dist/new_toefl/css/channel/exercises/write/write-article.css?202004091002"/>
+</head>
+<body>
+    <!--容器-->
+<div class="mocks-container js-mocks-container  fullScreen " id = "container">
+    <!--顶部-->
+    <div class="mocks-header">
+        <!--左侧信息-->
+        <div class="header-left">
+            <!--<p class="header-logo">toefl.kmf.com</p>-->
+            <p class="header-topic">添加写作(题目规范不能超过300字，题目不能超过2000字)</p>
+            <!--按钮容器-->
+            <div class="header-buttons">
+                <!--<div class="pause-test rectangle-button mocks-icons" id="js-pause-test"></div>-->
+                            </div>
+        </div>
+        <div class="header-right examination">
+            <div class="header-buttons">
+            <!--纠错按钮-->
+                <!--按钮容器-->
+                <input type = "button" @click = "quit" class="quit-button rectangle-button result-icons fl mr8" id="js-quit" value = "退出"></input>
+                <input type = "submit" @click = "send_to" class="continue-button rectangle-button mocks-icons fl mr8" id="js-continue"></input>
+            </div>
+
+            <!--倒计时(hideTime)-->
+            <div class="time-box" id="js-time-box">
+                <span>时间(单位分钟):</span>
+                <input type = "number" v-model = "time" id = "time"/>
+            </div>
+        </div>
+</form>
+        <!--题号-->
+        <div class="question-part">
+            <span>标题:</span>
+            <input type = "text" v-model = "title" id = "title"/>
+            <span>类型:</span>
+            <select id = "type">
+                <option selected>四级</option>
+                <option>六级</option>
+                <option>托福</option>
+                <option>雅思</option>
+                <option>考研</option>
+                <option>GRE</option>
+            <select>
+        </div>
+    </div>
+    <!--主体-->
+
+        <!--右侧信息-->
+<form method = "post" action = "{% url 'write_add' %}" id = "myform">
+    {% csrf_token %}
+    <div class="mocks-main" id="js-mocks-main">
+            <div class="write-main">
+                <textarea class="write-top" style = "font-size: 20px;" name = "top">
+填写题目要求，规范
+                </textarea>
+                <div class="write-box">
+                    <textarea class="write-left fl js-translate-content" style = "font-size: 16px;" name = "problem">
+填写题目
+                    </textarea>
+                    <textarea class="write-right fr" style = "font-size: 16px;" readonly>
+                    </textarea>
+                    <input type = "hidden" name = "time" ref = "time"/>
+                    <input type = "hidden" name = "title" ref = "title"/>
+                    <input type = "hidden" name = "type" ref = "type"/>
+                </div>
+            </div>
+    </div>
+</form>
+    <!--底部-->
+    <div class="mocks-footer" id="js-mocks-footer">
+        <span class="footer-msg"></span>
+    </div>
+</div>
+<script src="/static/myadmin/assets/js/vue.min.js"></script>
+<script>
+{% if error %}
+    var error = "{{error}}";
+    if(error.length != 0)
+        alert(error);
+{% endif %}
+var app = new Vue({
+    el: "#container",
+    delimiters: ['{[', ']}'],
+    data:{
+        time: 0,
+        title: "",
+    },
+    methods:{
+        quit: function(){
+            window.location = "{% url 'lesson_index' %}";
+        },
+        send_to: function(){
+            this.$refs.time.value = document.getElementById('time').value;
+            this.$refs.title.value = document.getElementById('title').value;
+            this.$refs.type.value = document.getElementById('type').value;
+            document.getElementById('myform').submit();
+        }
+    }
+});
+</script>
+  </body>
+</html>

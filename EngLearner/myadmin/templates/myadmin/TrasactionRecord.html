@@ -1,0 +1,98 @@
+{% extends 'myadmin/empty_page.html' %}
+
+{% block extra_head %}
+<!--DataTables css-->
+<link rel="stylesheet" href="/static/myadmin/assets/plugins/Datatable/css/dataTables.bootstrap4.css">
+{% endblock%}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">我的账号</a></li>
+    <li class="breadcrumb-item active" aria-current="page">交易记录</li>
+</ol>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-header">
+				<h4>交易记录</h4>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+				<table id="example" class="table table-striped table-bordered border-t0 text-nowrap w-100" >
+					<thead>
+						<tr>
+							<th class="wd-25p">描述</th>
+							<th class="wd-20p">时间</th>
+							<th class="wd-25p">订单号</th>
+							<th class="wd-15p">金额总数</th>
+							<th class="wd-10p">状态</th>
+						</tr>
+					</thead>
+					<img src = "/static/img/tips.png" style = "width: 15px; heigh:15px;" onmouseover = "warning()">
+					<tbody>
+						{% for record in Records%}
+							<tr>
+								<td>{{record.desc}}</td>
+								<td>{{record.Date}}</td>
+								<td>{{record.recordId}}</td>
+								<td>{{record.Total}}</td>
+								{% if record.status == '正在支付' %}
+									<td onclick = "revarified({{record.recordId}})" id = "{{record.recordId}}">{{record.status}}</td>
+								{% else %}
+									<td> {{record.status}} </td>
+								{% endif %}
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+<!--DataTables js-->
+<script src="/static/myadmin/assets/plugins/Datatable/js/jquery.dataTables.js"></script>
+<script src="/static/myadmin/assets/plugins/Datatable/js/dataTables.bootstrap4.js"></script>
+
+<script src="/static/myadmin/assets/js/axios.min.js"></script>
+<script src="/static/myadmin/assets/js/qs.min.js"></script>
+<script>
+	$(function(e) {
+		$('#example').DataTable();
+	} );
+	function getCookie (name) {
+        var value = '; ' + document.cookie;
+        var parts = value.split('; ' + name + '=');
+        if (parts.length === 2) return parts.pop().split(';').shift()
+    };
+
+	var revarified = function(id){
+		axios({
+			url: '{% url 'varified' %}',
+			method: 'post',
+			responseType: 'json', // 默认的
+			data: Qs.stringify({
+				'id': id 
+			}),
+			headers: {
+				'X-CSRFToken': this.getCookie('csrftoken')
+			}
+		})
+		.then(function (response) {
+			if(response.data['status'] == 'success'){
+				document.getElementById(response.data['id']).innerHTML = "成功支付";
+			}
+			else if(response.data['status'] == 'redirect'){
+				window.location.href = response.data['url'];
+			}
+		})
+	}
+	var warning = function(){
+		alert('点击状态栏的正在支付能更新数据');
+	}
+</script>
+{% endblock %}

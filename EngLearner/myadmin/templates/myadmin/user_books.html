@@ -1,0 +1,45 @@
+{% extends 'myadmin/empty_page.html' %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Elements</li>
+</ol>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="e-panel card">
+            <div class="card-header">
+                <h4>已有书籍</h4>
+            </div>
+            <div class="card-body">
+                <div class="e-table">
+                    <div class="table-responsive table-lg">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">图片</th>
+                                    <th>名字</th>
+                                    <th>日期</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for bought in boughts %}
+                                    <tr>
+                                        <td class="align-middle text-center"><img alt="image" class="avatar avatar-md rounded-circle" src="assets/img/avatar/avatar-1.jpeg"></td>
+                                        <td class="text-nowrap align-middle">{{bought.product.product_name}}</td>
+                                        <td class="text-nowrap align-middle"><span>{{bought.Date}}</span></td> 
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
+
+{% block extra_javascript %}
+
+{% endblock %}

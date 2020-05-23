@@ -1,0 +1,64 @@
+<aside class="app-sidebar">
+	<div class="app-sidebar__user">
+	    <div class="dropdown">
+			<a class="nav-link pl-2 pr-2 leading-none d-flex" data-toggle="dropdown" href="#">
+				<img alt="image" src="/static/img/avatar.jpg" class=" avatar-md rounded-circle">
+				<span class="ml-2 d-lg-block">
+					<span class="text-white app-sidebar__user-name mt-5">{{request.user.get_username}}</span><br>
+					<span class="text-muted app-sidebar__user-name text-sm">
+						{% if request.user.is_superuser == 1 %}
+							superuser
+						{% elif request.user.is_superuser == 0%}
+							common
+						{% endif %}
+						{% if request.user.is_authenticated == False %}
+							<a id = "tologin" href="{% url 'myadmin_login' %}" value = "{{request.user.is_authenticated}}"></a>
+						{% endif %}
+					</span>
+				</span>
+			</a>
+		</div>
+	</div>
+	<ul class="side-menu">
+		<li class="slide">
+			<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-tasks"></i><span class="side-menu__label">个人主页</span><i class="angle fa fa-angle-right"></i></a>
+			<ul class="slide-menu">
+				<li><a href="{% url 'myadmin_index' %}" class="slide-item"> 个人详情</a></li>
+				<li><a href="{% url 'score_log' %}" class="slide-item"> 打卡记录</a></li>
+				<li><a href="{% url 'user_books' %}" class="slide-item"> 已购书籍</a></li>
+			</ul>
+		</li>
+		<li>
+			<a class="side-menu__item" href="{% url 'safe' %}"><i class="side-menu__icon fa fa-desktop"></i><span class="side-menu__label">账号安全</span></a>
+		</li>
+		<li class="slide">
+			<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-tasks"></i><span class="side-menu__label">我的账户</span><i class="angle fa fa-angle-right"></i></a>
+			<ul class="slide-menu">
+				<li><a href="{% url 'shop_cart' %}" class="slide-item"> 购物车</a></li>
+				<li><a href="{% url 'trasaction_record' %}" class="slide-item"> 交易记录</a></li>
+				<li><a href="{% url 'charge' %}" class="slide-item"> 快速充值</a></li>
+			</ul>
+		</li>
+		<li>
+		    <a class="side-menu__item" href="{% url 'mail_mes' %}"><i class="side-menu__icon fa fa-paw"></i><span class="side-menu__label">信息中心</span></a>
+		</li>
+		{% if request.user.is_superuser == 1 %}
+			<li>
+			    <a class="side-menu__item" href="/admin"><i class="side-menu__icon fa fa-paw"></i><span class="side-menu__label">管理员系统</span></a>
+			</li>
+		{% endif %}
+	</ul>
+</aside>
+<script type="text/javascript">
+	var app = new Vue({
+		el: "#tologin",
+		mounted(){
+			this.$el.click();
+		},
+		methods:{
+			send: function(){
+				console.log('test');
+			}
+		}
+	})
+</script>

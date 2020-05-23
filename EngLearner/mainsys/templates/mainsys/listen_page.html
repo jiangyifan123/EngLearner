@@ -1,0 +1,65 @@
+{% extends 'mainsys/empty_page.html' %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+<section class="section">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Forms</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Advanced Form Elements</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card overflow-hidden">
+                <div class="card-header">
+                    <h4>听力表</h4>
+                </div>
+                <div class="card-body" id = "word_set">
+                    <form method = "post" action = "{% url 'write_detail' %}" id = "myform">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group overflow-hidden">
+                                    <label>听力习题册</label>
+                                    <select class="form-control select2 w-100" id = "select">
+                                        {% for data in listens %}
+                                        <option id = "{{data.id}}"> {{data.title}} </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div style = "text-align: center;" class="col-md-12">
+                                <input type = "hidden">
+                                <a @click = "to_listen" class="btn btn-primary m-b-5 m-t-5" style = "color: #f6f6f9;">开始练习听力</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+{% endblock %}
+{% block extra_javascript %}
+<script src="/static/myadmin/assets/js/vue.min.js"></script>
+<script>
+var app = new Vue({
+    el: "#word_set",
+    methods:{
+        to_listen: function(){
+            var selected_list = document.getElementById('select');
+            var pos = selected_list.selectedIndex;
+            var id = selected_list.options[pos].id;
+            window.location.href = "http://127.0.0.1:8000/lesson/listen_detail/?id=" + id;
+        }
+    }
+});
+</script>
+{% endblock %}

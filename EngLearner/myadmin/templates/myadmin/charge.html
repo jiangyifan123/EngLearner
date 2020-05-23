@@ -1,0 +1,131 @@
+{% extends 'myadmin/empty_page.html' %}
+
+{% block extra_head %}
+<!--Range-sliders css-->
+<link rel="stylesheet" href="/static/myadmin/assets/plugins/ion-rangeslider/ion.rangeSlider.css">
+<link rel="stylesheet" href="/static/myadmin/assets/plugins/ion-rangeslider/ion.rangeSlider.skinHTML5.css">
+{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">我的账户</a></li>
+    <li class="breadcrumb-item active" aria-current="page">快速充值</li>
+</ol>
+<div class="row" id = "select_money">
+	<div class="col-lg-4">
+		<div class="card pt-inner">
+			<div class="card-body ">
+				<form id = "25" method = "POST" action = "#" ref = "table25">
+					{% csrf_token %}
+					<div class="pti-header bg-primary">
+						<h2>$25 <small>/ mo</small></h2>
+						<div class="ptih-title"></div>
+					</div>
+					<div class="pti-footer border">
+						<input type = "hidden" name = "value" value = "25"> 
+						<a class="btn btn-primary" @click="input25" style = "color: #fff">充值</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="card pt-inner">
+		<form id = "25" method = "POST" action = "#" ref = "table50">
+			{% csrf_token %}
+			<div class="card-body ">
+				<div class="pti-header bg-success">
+					<h2>$50 <small>/ mo</small></h2>
+					<div class="ptih-title"></div>
+				</div>
+				<div class="pti-footer border">
+					<input type = "hidden" name = "value" value = "50"> 
+					<a class="btn btn-success" @click = "input50" style = "color: #fff">充值</a>
+				</div>
+			</div>
+		</form>
+		</div>
+	</div>
+	<div class="col-lg-4">
+	<form id = "25" method = "POST" action = "#" ref = "table100">
+		{% csrf_token %}
+		<div class="card pt-inner">
+			<div class="card-body">
+				<div class="pti-header bg-cyan">
+					<h2>$100 <small>/ mo</small></h2>
+					<div class="ptih-title"></div>
+				</div>
+				<div class="pti-footer border">
+						<input type = "hidden" name = "value" value = "100"> 
+					<a href="" class="btn btn-info" @click = "input100">充值</a>
+				</div>
+			</div>
+		</div>
+	</form>
+	</div>
+	<div class="col-md-12 col-lg-12">
+		<div class="card">
+			<div class="card-header">
+				<h4>自定义金额:</h4>
+			</div>
+			<div class="">
+				<form class="form-horizontal" method = "POST" action = "#">
+					{% csrf_token %}
+					<div class="form-group row mb-0 border-top card-body" id = "range_money">
+						<div class="col-md-2">
+							<input class="form-control" type="number" name="value" v-model = "message" @blur="blur">
+						</div>
+						<div class="col-lg-10">
+							<input type="text" id="range_07">
+						</div>
+						<button type="input" class="btn btn-primary btn-block">充值</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+<!--Range-sliders js-->
+<script src="/static/myadmin/assets/plugins/ion-rangeslider/ion.rangeSlider.min.js"></script>
+<script src = "/static/myadmin/assets/js/vue.min.js"></script>
+<script type="text/javascript">
+var a = new Vue({
+	el: "#select_money",
+	delimiters: ['{[', ']}'],
+	data:{
+		message: "100"
+	},
+	methods:{
+		blur: function(){
+			var el = $("#range_07").data('ionRangeSlider');
+			el.update({
+				from: this.message
+			});
+		},
+		input25: function(){
+			this.$refs.table25.submit();
+		},
+		input50: function(){
+			this.$refs.table50.submit();
+		},
+		input100: function(){
+			this.$refs.table100.submit();
+		},
+	}
+})
+$("#range_07").ionRangeSlider({
+    grid: true,
+    min: 0,
+    max: 100000,
+    from: a.message,
+    step: 1,
+    prettify_enabled: true,
+    onChange: function (data) {
+        a.message = data.from;
+    }
+});
+</script>
+{% endblock %}

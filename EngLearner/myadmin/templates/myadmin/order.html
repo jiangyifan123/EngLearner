@@ -1,0 +1,77 @@
+{% extends 'myadmin/empty_page.html' %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">我的账户</a></li>
+    <li class="breadcrumb-item active" aria-current="page">订单</li>
+</ol>
+
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class=" mb-0">
+				<div class="clearfix card-body p-3 border-bottom">
+					<div class="pull-left">
+						<h5 class="mb-0"></h5>
+					</div>
+					<div class="pull-right">
+						<p class="text-muted mb-0 mt-1">{{Date}}</p>
+					</div>
+				</div>
+				<div class="row card-body">
+					<div class="col-md-12">
+
+					</div><!-- end col -->
+				</div>
+				<!-- end row -->
+
+				<div class="card-body pt-0">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table border table-bordered text-nowrap">
+									<thead>
+										<tr>
+											<th class="border-0 text-uppercase  font-weight-bold">ID</th>
+											<th class="border-0 text-uppercase  font-weight-bold">产品名字</th>
+											<th class="border-0 text-uppercase font-weight-bold">描述</th>
+											<th class="border-0 text-uppercase  font-weight-bold">语言考试</th>
+											<th class="border-0 text-uppercase  font-weight-bold">类别</th>
+											<th class="border-0 text-uppercase  font-weight-bold">总数</th>
+										</tr>
+									</thead>
+									<tbody>
+									{% for product in products %}
+										<tr>
+											<td>{{forloop.counter}}</td>
+											<td>{{product.product_name}}</td>
+											<td>{{product.product_description}}</td>
+											<td>{{product.product_type}}</td>
+											<td>{{product.product_style}}</td>
+											<td>${{product.product_price}}</td>
+										</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-xl-4 col-12 offset-xl-8">
+							<p class="text-right"><strong>原价:</strong> ${{total}}</p>
+							<hr>
+							<h5 class="text-right">总数 :<strong> ${{total}}</strong></h5>
+						</div>
+					</div>
+					<div class=" mb-0">
+						<div class="pull-right">
+							<a href="{% url 'payBycoins' %}" class="btn btn-success  m-b-5 m-t-5"><i class="fa fa-paper-plane"></i> 虚拟币支付 </a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

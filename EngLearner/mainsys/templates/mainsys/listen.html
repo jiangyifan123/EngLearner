@@ -1,0 +1,423 @@
+<!doctype html>
+<html>
+<head>
+    <title>听力练习</title>
+        <link rel="stylesheet" href="/static/mainsys/css/common_w.css-202003311539.css" tppabs="https://code.kmf.com/dist/common/css/channel/common_w.css?202003311539"
+          charset="utf-8" type="text/css"/>
+         <link type="text/css" rel="stylesheet" href="/static/mainsys/css/full-listen.css" tppabs="https://code.kmf.com/dist/new_toefl/css/channel/intensive/full-listen.css?202003311539"/>
+</head>
+<body>
+    <!--容器(fullScreen:全屏)-->
+    <div class="container js-container fullScreen" id = "jp_box">
+        <!--头部-->
+        <div class="header">
+            <!--logo-->
+            <div class="header-logo">
+                <i class="logo-icon"></i>
+                <p class="header-title">{{title}}</p>
+            </div>
+            <!--按钮-->
+            <div class="header-tools">
+                <!--结束训练-->
+                <a href="{% url 'lesson_index' %}" class="tools-button quit-listening js-quit-listen">
+                    <i class="tools-btn-icon quit-icon intensive-icons"></i>
+                    <span class="menu-text">结束训练</span>
+                </a>
+            </div>
+        </div>
+        <!--内容容器(original:显示原文,translation:译文)-->
+        <div class="main js-origin-main">
+            <!--定位容器-->
+            <div class="original-box g-clearfix">
+                <!--内容按钮-->
+                <div class="main-tools">
+                    <!--左侧模式-->
+                    <div class="listen-modes g-clearfix">
+                        <a href="javascript:;" class="listen-mode-btn current js-type-select" data-jid="92428" data-qid="75606" data-type="full">全文精听</a>
+                        <a href="javascript:;" class="listen-mode-btn js-type-select " data-type="sentence">逐句精听</a>
+                                            </div>
+                    <!--右侧功能按钮-->
+                    <div class="action-models g-clearfix">
+                        <!--显示/隐藏原文按钮-->
+                        <div class="action-buttons js-original-btn">
+                            <i class="original-icon intensive-icons"></i>
+                            <span class="buttons-msg origin-show" @click="show_all" ref = "showall">始终显示原文</span>
+                            <span class="buttons-msg origin-show" @click="hide_all" style = "display: none;" ref = "hideall">始终隐藏原文</span>
+                        </div>
+                    </div>
+                </div>
+                <!--全文精听-->
+                <div class="listen-original-cont original-detail-box">
+                    <!--默认开始页-->
+                    <div class="original-begin js-original-begin" ref = "init_showpage">
+                        <div class="begin-container">
+                            <div class="begin-title">欢迎精听精研</div>
+                            <div class="begin-subtitle">坚持练习精听，反复听、吃透每个句子，能够快速 提升听力能力</div>
+                            <div class="start-intensive js-start-intensive" @click = "start">开始精听</div>
+                            <div class="begin-tips" @click = "start"> 或按 「 <em class="shorcut-key">空格</em>」开始播放</div>
+                        </div>
+                    </div>
+                    <!--默认隐藏页-->
+                    <div class="origin-hidden-page original-cont" ref = "init_hidepage">
+                                                        <!--段落1-->
+                                <div class="paragraph-box">
+                                    <!--段落分割线-->
+                                    <p class="paragraph-name">段落<span class="paragraph-dotted-line"></span></p>
+                                        {% for data in datas%}
+                                                                                <!--段落句子-->
+                                            <div class="paragraph-sentence js-translate-newcontent lrc-sentence" data-id="92468" data-qid="75606">
+                                                <!--原文-->
+                                                                                               <div class="paragraph-origin">
+                                                    <!--放置原文内容区域-->
+                                                    <div class="orgin-content js-orgin-content original-en" data-time="{{data.time}}" data-alltime="1.24">
+                                                        <p class="sentence-content"> {{data.eng}}</p>
+                                                        <span class="hover-icon intensive-icons noplaying-hover-style origin-play-icon" style = "display:none;" id = "hide3_{{forloop.counter}}" @click="set_time({{data.time}});"></span>
+                                                        <!--原文遮挡块(播放中，hover,未播放默认)-->
+                                                        <div class="origin-hide-box" style = "display: block;" id = "hide2_{{forloop.counter}}" @click="show_detail({{forloop.counter}});">
+                                                            <!--内容遮罩容器-->
+                                                            <div class="origin-hide" style = "display: block;" id = "hide_{{forloop.counter}}">
+                                                                <!--未播放默认背景样式-->
+                                                                <p class="playing-title js-show-origin">点击显示原文</p>
+                                                            </div>
+                                                            <!--播放中样式-->
+                                                            <div class="playing-style">
+                                                                <span class="play-status playing-icon js-play-status"></span>
+                                                            </div>
+                                                            <!--未播放句子hover-->
+                                                            <div class="hover-style">
+                                                                <span class="hover-icon intensive-icons noplaying-hover-style"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--功能按钮(译文隐藏显示、收藏、笔记)-->
+                                                    <div class="origin-action-buttons g-clearfix list-original">
+                                                        <div class="switch-translation js-switch-origin">
+                                                            <!--隐藏原文解释框-->
+                                                            <span class="show-transition"><span class="transition-text">隐藏原文</span><em>=</em></span>
+                                                        </div>
+                                                        <!--显示隐藏译文-->
+                                                        <div class="switch-translation js-switch-translation intensive-icons" @click="translate_opt({{forloop.counter}})">
+                                                            <!--显示译文解释框-->
+                                                            <span class="show-transition">显示译文</span>
+                                                        </div>
+                                                                                                        <!--收藏容器-->
+                                                        <!--添加笔记-->
+                                                        <div class="add-note intensive-icons js-original-notes js-kmf-login " data-tid="92468" data-note="" data-nid="" @click = "hind_detail({{forloop.counter}});"></div>
+                                                    </div>
+                                                </div>
+                                                <!--放置译文内容区域-->
+                                                <div style = "display:none;" id = "translator_{{forloop.counter}}" >{{data.chinese}}</div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                </div>
+                <!--逐句精听-->
+                <div class="sentence-original-cont original-detail-box" style="display:none;">
+                    <!--逐句精听默认开始页-->
+                    <div class="sentence-begin  js-original-begin">
+                        <!-- 上一句不可点击 -->
+                        <div class="sentence-ctrl scale-style intensive-icons prev disable"></div>
+                        <div class="sentence-begin-box">
+                            <div class="begin-container">
+                                <div class="begin-title">欢迎使用&nbsp;KMF&nbsp;精听精研</div>
+                                <div class="begin-subtitle">坚持练习精听，反复听、吃透每个句子，能够快速 提升听力能力</div>
+                                <div class="start-intensive js-start-intensive">开始精听</div>
+                                <div class="begin-tips"> 或按 「 <em class="shorcut-key">空格</em>」开始播放</div>
+                            </div>
+                        </div>
+                        <!-- 下一句不可点击 -->
+                        <div class="sentence-ctrl scale-style intensive-icons next disable"></div>
+                    </div>
+                    <!-- 逐句精听句子容器-->
+                    <div class="listen-sentence-cont sentence-begin original-begin js-sentence-cont">
+                        <!-- 收藏缺省图 -->
+                        <!-- <div class="favorite-default-cont" style="display: none;">
+                                                <div class="default-img"></div>
+                                                <div class="default-msg">唯有精细，方能卓越</div>
+                                                <div class="default-submsg">收藏不同类型句子，有助于高效复习</div>
+                                            </div> -->
+                        <!-- 上一句 -->
+                        <div class="sentence-ctrl scale-style intensive-icons prev js-prev-audio disable"></div>
+                        <!-- 原文容器 -->
+                        <div class="sentence-lists-box sentence-begin-box">
+                            <!-- 原文列表容器 -->
+                            <ul class="listen-sentence-lists js-listen-sentences">
+                                                            <!-- 原文内容(original:显示原文,translation:译文) -->
+                                    <li class="listen-sentence-list js-listen-sentence hide-original hide-translation" data-num="1" data-url="https://img.kmf.com/qmmp3/11037/92430_20190617164204.mp3" data-type="mp3" data-id="92430" id="s_92430">
+                                        <!-- 工具栏 -->
+                                        <div class="sentence-tools g-clearfix list-original">
+                                            <!-- 序号 -->
+                                            <div class="sentence-num">
+                                                <span class="current-num">1</span>
+                                                <span class="num-detail">/</span>
+                                                <span class="num-detail">29</span>
+                                                                                            </div>
+                                            <!-- 笔记 -->
+                                            <div class="sentence-notes  js-kmf-login " data-tid="92430">
+                                                <i class="sentence-icon intensive-icons scale-style js-original-notes" data-tid="92430" data-note="" data-nid=""></i>
+                                                <!-- <span class="note-msg">笔记</span> -->
+                                            </div>
+                                            <!-- 收藏 -->
+                                            <div class="original-collect-cont intensive-icons  scale-style js-collect-cont default  js-kmf-login " data-jid="92430" data-seq="1" data-fav="">
+                                                <!-- 收藏图标(hard:长难句,voice:语音问题,good:好句,other:其它) -->
+                                                <ul class="collect-lists js-collect-lists">
+                                                    <li class="collect-list js-collect-list" data-type="1">
+                                                        <i class="collect-icon intensive-icons hard"></i>
+                                                        <span class="collect-msg">收藏为</span>
+                                                        <span class="collect-type">长难句</span>
+                                                    </li>
+                                                    <li class="collect-list js-collect-list" data-type="2">
+                                                        <i class="collect-icon intensive-icons voice"></i>
+                                                        <span class="collect-msg">收藏为</span>
+                                                        <span class="collect-type">语音问题</span>
+                                                    </li>
+                                                    <li class="collect-list js-collect-list" data-type="3">
+                                                        <i class="collect-icon intensive-icons good"></i>
+                                                        <span class="collect-msg">收藏为</span>
+                                                        <span class="collect-type">好句</span>
+                                                    </li>
+                                                    <li class="collect-list js-collect-list" data-type="0">
+                                                        <i class="collect-icon intensive-icons other"></i>
+                                                        <span class="collect-msg">收藏为</span>
+                                                        <span class="collect-type">其它</span>
+                                                    </li>
+                                                    <li class="collect-list close-collect js-close-collect">取消</li>
+                                                </ul>
+                                            </div>
+                                            <!-- 显示译文 -->
+                                                                                            <div class="sentence-show-transition js-sentence-transition">
+                                                    <span class="transition-text">显示译文</span>
+                                                    <span class="sentence-transition-shortkey">-</span>
+                                                </div>
+                                                                                        <div class="sentence-show-transition js-sentence-origin">
+                                                <span class="transition-text">显示原文</span>
+                                                <span class="sentence-transition-shortkey">=</span>
+                                            </div>
+                                        </div>
+                                        <!-- 原文内容容器 -->
+                                        <div class="sentence-box">
+                                            <!-- 文章容器 -->
+                                            <div class="sentence-container">
+                                                <!-- 精听容器 -->
+                                                <div class="listen-sentence-box">
+                                                    <!-- 原文容器 -->
+                                                    <div class="listen-sentence-detail js-translate-newcontent">
+                                                        <div>
+                                                            <p class="sentence-detail-title">
+                                                                NARRATOR：                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                                
+                                                            <p class="sentence-detail-content"> Listen to a conversation between a student and an employee in the university’s historical library.</p>
+                                                        </div>
+                                                        <!-- 查看原文按钮 -->
+                                                        <div class="show-translation-btn original js-show-translation">
+                                                        <span class="translation-btn-msg">
+                                                            <em class="translation-msg">点击显示原文</em>
+                                                            <em class="shorcut-key">=</em>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 听写容器 -->
+                                                    <div class="write-sentence-box js-write-sentence">
+
+                                                    </div>
+                                                </div>
+                                                <!-- 译文容器 -->
+                                                <div class="transition-cont">
+                                                    <!-- 译文 -->
+                                                    <div class="listen-translation">
+                                                        请听一段学生和大学历史图书馆雇员之间的对话。
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                            
+                            </ul>
+                        </div>
+                        <!-- 下一句 -->
+                        <div class="sentence-ctrl scale-style intensive-icons next js-next-audio disable"></div>
+                    </div>
+                </div>
+                <!--快捷键容器-->
+                <div class="shortcut-key">
+                    <span class="key">[</span>
+                    <span class="key key-back">
+                        &lt;</span> <span class="backspace-key">空格
+                    </span>
+                    <span class="key key-forward">&gt;</span>
+                    <span class="key">]</span>
+                </div>
+                <!--播放器容器-->
+                <div class="audio-controller g-clearfix">
+                    <!--上一句按钮-->
+                    <div class="audio-prev intensive-icons jp-prev"></div>
+                    <!--向后x秒(active:展示列表)-->
+                    <div class="audio-backward intensive-icons js-audio-backward"></div>
+                    <!--播放按钮-->
+                    <div class="audio-ctrl-btn">
+                        <div class="audio-play intensive-icons jp-play" @click="audio_play"></div>
+                        <div class="audio-pause intensive-icons jp-pause" style="display: none;"></div>
+                    </div>
+                    <!--向前x秒(active:展示列表)-->
+                    <div class="audio-forward intensive-icons js-audio-forward"></div>
+                    <!--下一句按钮-->
+                    <div class="audio-next intensive-icons jp-next"></div>
+                    <!--刷新当前句按钮-->
+                    <div class="refresh-current pannel-repeat-w" style="display: block;">
+                        <i class="refresh-current-icon intensive-icons"></i>当前句<span class="refresh-shortkey">&nbsp;/</span>
+                    </div>
+                    <!--进度条/音频标题容器-->
+                    <div class="audio-details">
+                        <!--进度条容器-->
+                        <div class="audio-progress-cont">
+                            <!--音频时间容器-->
+                            <div class="audio-times">
+                                <span class="begin-time jp-current-time">00:00</span>
+                                <span class="time-separator">/</span>
+                                <span class="total-time jp-total-time">00:08</span>
+                            </div>
+                            <!--进度条-->
+                            <div class="audio-progress kmf-player-progress ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--音量控制(active:展示音量进度条)-->
+                    <div class="audio-volume-cont js-volume-cont">
+                        <div class="audio-volume play-volume intensive-icons"></div>
+                        <div class="volume-progress-cont">
+                            <div class="volume-progress" aria-disabled="false">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--右侧-->
+            <div class="sentence-navigation">
+                <!--每一段-->
+                <div class="playlist" id = "playlist">
+                    <ul class="list depend-paragraph" data-type="3" data-jid="92429">
+                        <li class="paragraph-all-name" data-id="92429">段落</li>
+                        {% for data in datas %}
+                            <li class="paragraph-of-sentence js-playSelected pl-sentence current" @click = "set_time({{data.time}});" data-time="{{data.time}}" data-type="4" data-jid="92430" data-qid="75606">第 {{forloop.counter}} 句 <span class="icon-player list-player-icon"></span>
+                                <a href="javascript:;" class="icon-player-new js-play-status"></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--底部-->
+        <div class="footer"></div>
+    </div>
+    <!--音频容器-->
+    <div class="kmf-player" id="kmflayer" style="width: 0px; height: 0px;">
+        <img id="jp_poster_0" style="width: 0px; height: 0px; display: none;">
+        <audio id="jp_audio_0" preload="metadata" src="{{mp3_url}}" __idm_id__="442269697"></audio>
+    </div>
+    <div class="g-word-tool" style="display: none;">
+
+        <a class="menu word" href="javascript:;" data-qid="75606"><span class="toolicobg word-ico"></span>查词</a>
+
+
+        <span class="split">|</span>
+
+        <a class="menu note" href="javascript:;" data-qid="75606"><span class="toolicobg note-ico"></span>笔记</a>
+
+        <span class="arrow"></span>
+    </div>
+</div>
+<script src="/static/myadmin/assets/js/axios.min.js"></script>
+<script src="/static/myadmin/assets/js/qs.min.js"></script>
+<script src="/static/myadmin/assets/js/vue.min.js"></script>
+<script>
+function getCookie (name) {
+    var value = '; ' + document.cookie;
+    var parts = value.split('; ' + name + '=');
+    if (parts.length === 2) return parts.pop().split(';').shift()
+};
+var Len = {{Len}};
+var app = new Vue({
+    el: "#jp_box",
+    delimiters: ['{[', ']}'],
+    data:{
+        mes: "123",
+        len: {{Len}},
+    },
+    methods:{
+        start: function(){
+            this.$refs.init_showpage.style = "display: none;";
+            this.$refs.init_hidepage.style = "display: block;";
+            this.audio_play();
+        },
+        show_detail: function(id){
+            document.getElementById('hide_' + id).style.display = "none";
+            document.getElementById('hide2_' + id).style.display = "none";
+            document.getElementById('hide3_' + id).style.display = "inline";
+        },
+        hind_detail: function(id){
+            document.getElementById('hide_' + id).style.display = "block";
+            document.getElementById('hide2_' + id).style.display = "block";
+            document.getElementById('hide3_' + id).style.display = "none";
+        },
+        show_all: function(){
+            for(var id = 1; id <= Len; id++){
+                document.getElementById('hide_' + id).style.display = "none";
+                document.getElementById('hide2_' + id).style.display = "none";
+                document.getElementById('hide3_' + id).style.display = "inline";
+            }
+            this.$refs.showall.style = "display: none;";
+            this.$refs.hideall.style= "";
+            for(var num = 1; num <= this.len; num++){
+                var translator = document.getElementById("translator_"+num);
+                translator.style = "";
+            }
+        },
+        hide_all: function(){
+            for(var id = 1; id <= Len; id++){
+                document.getElementById('hide_' + id).style.display = "block";
+                document.getElementById('hide2_' + id).style.display = "block";
+                document.getElementById('hide3_' + id).style.display = "none";
+            }
+            this.$refs.showall.style = "";
+            this.$refs.hideall.style = "display: none;";
+            for(var num = 1; num <= this.len; num++){
+                var translator = document.getElementById("translator_"+num);
+                translator.style = "display: none;";
+            }
+        },
+        audio_play: function(){
+            var audio = document.getElementById('jp_audio_0')
+            if(audio.paused){
+                audio.play();
+            }
+            else{
+                audio.pause();
+            }
+        },
+        set_time: function(time){
+            var player = document.getElementById('jp_audio_0');
+            player.currentTime = time;
+            if(player.paused){
+                player.play();
+            }
+        },
+        translate_opt: function(id){
+            var translator = document.getElementById("translator_"+id);
+            if(translator.style.cssText == ""){
+                translator.style = "display: none;";
+            }
+            else{
+                translator.style = "";
+            }
+        }
+    }
+})
+</script>
+  </body>
+</html>

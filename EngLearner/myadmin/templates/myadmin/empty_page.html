@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% include 'myadmin/header.html' %}
+		{% block extra_head %}
+
+		{% endblock %}
+	</head>
+
+	<body class="app ">
+
+		<div id="spinner"></div>
+
+		<div id="app">
+			<div class="main-wrapper" >
+				{% include 'myadmin/menu_topper.html' %}
+				{% include 'myadmin/sidebar.html' %}
+				
+				<div class="app-content">
+					<section class="section">
+					{% block content %}
+
+					{% endblock %}
+					</section>
+				</div>
+				
+				{% include 'myadmin/footer.html' %}
+
+			</div>
+		</div>
+		{% include 'myadmin/js.html' %}
+		{% block extra_javascript %}
+		{% endblock %}
+	</body>
+
+<script type="text/javascript">
+var app = new Vue({
+	el: "#UserBar",
+	delimiters: ['{[', ']}'],
+	data:{
+		test:'测试',
+	},
+	methods:{
+		logout: function (event){
+			alert("logout");
+		}
+	},
+})
+</script>
+</html>
+

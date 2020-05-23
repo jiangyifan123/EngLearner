@@ -1,0 +1,47 @@
+{% extends 'myadmin/empty_page.html' %}
+
+{% block extra_head %}
+<!--Timeline js-->
+<link rel="stylesheet" href="/static/myadmin/assets/plugins/timeline/timeline.css">
+{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Timeline</li>
+</ol>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="timeline">
+			<div class="timeline__wrap">
+				<div class="timeline__items">
+					{% for task in tasklist %}
+						<div class="timeline__item">
+							<div class="timeline__content card ">
+								<h2>{{ task.taskDate }}</h2>
+								<p>{{ task.task.taskname }} 获得积分: {{ task.task.taskpoints }}</p>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+<!--Timeline js-->
+<script src="/static/myadmin/assets/plugins/timeline/timeline.min.js"></script>
+<script src="/static/myadmin/assets/js/popper.js"></script>
+<script src="/static/myadmin/assets/js/tooltip.js"></script>
+<script>
+	timeline(document.querySelectorAll('.timeline'), {
+		forceVerticalMode: 700,
+		mode: 'vertical',
+		verticalStartPosition: 'left',
+		visibleItems: 4
+	});
+</script>
+{% endblock %}

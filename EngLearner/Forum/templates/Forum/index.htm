@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>剑鱼论坛 _ 技术论坛官方网站 _ JianYuLunTan</title>
+    <meta name="keywords" content="剑鱼论坛,论坛源码,论坛程序,bbs论坛系统,免费论坛,php论坛,论坛下载,技术论坛,it技术论坛">
+    <meta name="description" content="剑鱼论坛是鲶鱼CMS官方公开发布的一款bbs论坛系统，剑鱼论坛程序是完全开源免费的论坛源码，是一款轻量快速的php论坛源码，您可以到剑鱼官方论坛下载最新版论坛程序。源码许可使用CCL公共许可证发布，允许免费商用。如果您要建论坛类网站，那么剑鱼是您论坛网站建设的最佳选择。剑鱼bbs也是您探讨IT技术的首选论坛，欢迎来到剑鱼技术论坛(JianYuLunTan)。">
+    <link rel="icon" href="http://jianyuluntan.com/public/common/images/favicon.ico">
+    <link rel="stylesheet" href="/static/public/theme/default/css/jianyu.css" tppabs="http://jianyuluntan.com/public/theme/default/css/jianyu.css">
+    <script src="/static/public/common/js/jquery.min.js" tppabs="http://jianyuluntan.com/public/common/js/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="clearfix my-1">
+                <div class="btn-group float-right">
+                    <a class="btn btn-light btn-sm text-black-50 py-0" data-toggle="dropdown" href="#" role="button"><i class="fa fa-sort"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow">
+                        <a class="dropdown-item text-muted" href="-order=reply.htm" tppabs="http://jianyuluntan.com/?order=reply">最新回复</a>
+                        <a class="dropdown-item text-muted" href="-order=release.htm" tppabs="http://jianyuluntan.com/?order=release">最新发布</a>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h5>
+                                                <button type="button" class="btn btn-warning btn-sm py-0">置顶</button>
+                        <a href="column/91.html" tppabs="http://jianyuluntan.com/column/91.html" class="btn btn-info btn-sm py-0">剑鱼下载</a>
+                        <a href="type/1.html" tppabs="http://jianyuluntan.com/type/1.html" class="btn btn-info btn-sm py-0">原创</a>
+                        <a href="post/1.html" tppabs="http://jianyuluntan.com/post/1.html" class="text-info text-decoration-none">剑鱼论坛源码下载（1.6.6）</a>                    </h5>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;剑鱼论坛&nbsp;发表于&nbsp;2019年11月21日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;15天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;13分钟前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;17                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>剑鱼论坛</h6>
+                            <h6>LV&nbsp;4&nbsp;<span class="text-info">[小学]</span></h6>
+                            <h6>最后在线：18小时前</h6>
+                            <h6>加入时间：130天前</h6>
+                            <h6>主帖：77&nbsp;&nbsp;跟帖：29</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h5>
+                        <i class="fa fa-star text-warning"></i>&nbsp;                        <button type="button" class="btn btn-warning btn-sm py-0">置顶</button>
+                        <a href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html" class="btn btn-info btn-sm py-0">剑鱼论坛</a>
+                        <a href="type/1.html" tppabs="http://jianyuluntan.com/type/1.html" class="btn btn-info btn-sm py-0">原创</a>
+                        <a href="post/27.html" tppabs="http://jianyuluntan.com/post/27.html" class="text-info text-decoration-none">关于剑鱼论坛发帖规范的通知</a>                    </h5>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;剑鱼论坛&nbsp;发表于&nbsp;2019年12月07日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;3小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;0                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>剑鱼论坛</h6>
+                            <h6>LV&nbsp;4&nbsp;<span class="text-info">[小学]</span></h6>
+                            <h6>最后在线：18小时前</h6>
+                            <h6>加入时间：130天前</h6>
+                            <h6>主帖：77&nbsp;&nbsp;跟帖：29</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/87.html" tppabs="http://jianyuluntan.com/post/87.html" class="text-secondary text-decoration-none">论坛的SMTP服务无法使用，用的OUTLOOK的SMTP服务，无法开启邮箱注册。</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;a1a68e&nbsp;发表于&nbsp;2020年01月26日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;5天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;16分钟前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;4                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>a1a68e</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：64天前</h6>
+                            <h6>加入时间：64天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：0</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/1.html" tppabs="http://jianyuluntan.com/type/1.html">原创</a>&nbsp;]</span>&nbsp;<a href="post/82.html" tppabs="http://jianyuluntan.com/post/82.html" class="text-secondary text-decoration-none">提2个建议</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;0a7325&nbsp;发表于&nbsp;2020年01月14日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;10天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;3小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;2                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>0a7325</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：76天前</h6>
+                            <h6>加入时间：76天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：0</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/133.html" tppabs="http://jianyuluntan.com/post/133.html" class="text-secondary text-decoration-none">剑鱼论坛后台清理缓存失败</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;0bc32f&nbsp;发表于&nbsp;2020年03月18日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            0bc32f&nbsp;回复于&nbsp;12天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;16分钟前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;4                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>0bc32f</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：12天前</h6>
+                            <h6>加入时间：12天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：4</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/88.html" tppabs="http://jianyuluntan.com/column/88.html">其他技术</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/117.html" tppabs="http://jianyuluntan.com/post/117.html" class="text-secondary text-decoration-none">删除帖子后，主页依旧显示帖子，缓存文件没有删除</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;707968&nbsp;发表于&nbsp;2020年02月20日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;12天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;19小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;2                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>707968</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：39天前</h6>
+                            <h6>加入时间：39天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：0</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/124.html" tppabs="http://jianyuluntan.com/post/124.html" class="text-secondary text-decoration-none">网站后台设置栏目关键词和描述后，前端网页不显示关键词和描述</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;7a42a1&nbsp;发表于&nbsp;2020年03月07日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;22天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;15分钟前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;1                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>7a42a1</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：23天前</h6>
+                            <h6>加入时间：23天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：0</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/90.html" tppabs="http://jianyuluntan.com/column/90.html">剑鱼主题教程</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/1.html" tppabs="http://jianyuluntan.com/type/1.html">原创</a>&nbsp;]</span>&nbsp;<a href="post/40.html" tppabs="http://jianyuluntan.com/post/40.html" class="text-secondary text-decoration-none">剑鱼论坛主题制作之提取公共代码</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;剑鱼论坛&nbsp;发表于&nbsp;2019年12月17日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            剑鱼论坛&nbsp;回复于&nbsp;23天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;2小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;2                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>剑鱼论坛</h6>
+                            <h6>LV&nbsp;4&nbsp;<span class="text-info">[小学]</span></h6>
+                            <h6>最后在线：18小时前</h6>
+                            <h6>加入时间：130天前</h6>
+                            <h6>主帖：77&nbsp;&nbsp;跟帖：29</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/1.html" tppabs="http://jianyuluntan.com/type/1.html">原创</a>&nbsp;]</span>&nbsp;<a href="post/90.html" tppabs="http://jianyuluntan.com/post/90.html" class="text-secondary text-decoration-none">关于给新型冠状病毒感染肺炎疫情捐款的通知</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;剑鱼论坛&nbsp;发表于&nbsp;2020年01月28日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            剑鱼论坛&nbsp;回复于&nbsp;28天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;2小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;1                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>剑鱼论坛</h6>
+                            <h6>LV&nbsp;4&nbsp;<span class="text-info">[小学]</span></h6>
+                            <h6>最后在线：18小时前</h6>
+                            <h6>加入时间：130天前</h6>
+                            <h6>主帖：77&nbsp;&nbsp;跟帖：29</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/121.html" tppabs="http://jianyuluntan.com/post/121.html" class="text-secondary text-decoration-none">剑鱼论坛如何设置登陆或者恢复才可以查看帖子啊</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;1be9cf&nbsp;发表于&nbsp;2020年02月28日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;31天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;15分钟前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;1                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>1be9cf</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：31天前</h6>
+                            <h6>加入时间：31天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：0</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/119.html" tppabs="http://jianyuluntan.com/post/119.html" class="text-secondary text-decoration-none">关闭登录验证  密码找回功能用不了</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;b9980b&nbsp;发表于&nbsp;2020年02月27日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;32天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;9小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;5                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>b9980b</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：32天前</h6>
+                            <h6>加入时间：33天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：2</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/113.html" tppabs="http://jianyuluntan.com/post/113.html" class="text-secondary text-decoration-none">网速问题</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;d7ba22&nbsp;发表于&nbsp;2020年02月17日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            d7ba22&nbsp;回复于&nbsp;36天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;1天前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;2                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>d7ba22</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：45天前</h6>
+                            <h6>加入时间：45天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：1</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/1.html" tppabs="http://jianyuluntan.com/type/1.html">原创</a>&nbsp;]</span>&nbsp;<a href="post/111.html" tppabs="http://jianyuluntan.com/post/111.html" class="text-secondary text-decoration-none">给论坛一些建议</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;8c5d3b&nbsp;发表于&nbsp;2020年02月15日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;41天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;15分钟前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;1                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>8c5d3b</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：44天前</h6>
+                            <h6>加入时间：44天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：0</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/109.html" tppabs="http://jianyuluntan.com/post/109.html" class="text-secondary text-decoration-none">剑鱼怎么进入管理员后台</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;caf5dc&nbsp;发表于&nbsp;2020年02月15日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;44天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;7小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;1                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>caf5dc</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：45天前</h6>
+                            <h6>加入时间：45天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：0</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/data/avatar/65/u_11.png" tppabs="http://jianyuluntan.com/data/avatar/65/u_11.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/16.html" tppabs="http://jianyuluntan.com/post/16.html" class="text-secondary text-decoration-none">支持。 希望出点 模板 或是插件</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;64cb39&nbsp;发表于&nbsp;2019年12月01日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;45天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;5小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;3                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/data/avatar/65/u_11.png" tppabs="http://jianyuluntan.com/data/avatar/65/u_11.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>64cb39</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：120天前</h6>
+                            <h6>加入时间：120天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：1</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/106.html" tppabs="http://jianyuluntan.com/post/106.html" class="text-secondary text-decoration-none">【求助】关于剑鱼论坛发新帖时的“类型选择”问题</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;841eb8&nbsp;发表于&nbsp;2020年02月10日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            841eb8&nbsp;回复于&nbsp;46天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;1天前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;6                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>841eb8</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：46天前</h6>
+                            <h6>加入时间：49天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：4</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/104.html" tppabs="http://jianyuluntan.com/post/104.html" class="text-secondary text-decoration-none">采用IP方式连接数据库服务器老是出错</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;bcb587&nbsp;发表于&nbsp;2020年02月08日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;51天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;19小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;1                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>bcb587</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：51天前</h6>
+                            <h6>加入时间：51天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：0</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/data/avatar/81/u_95.png" tppabs="http://jianyuluntan.com/data/avatar/81/u_95.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/1.html" tppabs="http://jianyuluntan.com/type/1.html">原创</a>&nbsp;]</span>&nbsp;<a href="post/101.html" tppabs="http://jianyuluntan.com/post/101.html" class="text-secondary text-decoration-none">请站长更新账号注册后用户名自定义问题</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;路过一下&nbsp;发表于&nbsp;2020年02月06日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;52天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;7小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;3                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/data/avatar/81/u_95.png" tppabs="http://jianyuluntan.com/data/avatar/81/u_95.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>路过一下</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：53天前</h6>
+                            <h6>加入时间：55天前</h6>
+                            <h6>主帖：2&nbsp;&nbsp;跟帖：3</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info"><i class="fa fa-star-o text-warning"></i>&nbsp;[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/7.html" tppabs="http://jianyuluntan.com/type/7.html">活动</a>&nbsp;]</span>&nbsp;<a href="post/25.html" tppabs="http://jianyuluntan.com/post/25.html" class="text-secondary text-decoration-none">剑鱼论坛授权春节优惠结束 授权价已经恢复</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;剑鱼论坛&nbsp;发表于&nbsp;2019年12月07日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            剑鱼论坛&nbsp;回复于&nbsp;62天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;8小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;7                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>剑鱼论坛</h6>
+                            <h6>LV&nbsp;4&nbsp;<span class="text-info">[小学]</span></h6>
+                            <h6>最后在线：18小时前</h6>
+                            <h6>加入时间：130天前</h6>
+                            <h6>主帖：77&nbsp;&nbsp;跟帖：29</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/data/avatar/d1/u_79.png" tppabs="http://jianyuluntan.com/data/avatar/d1/u_79.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/85.html" tppabs="http://jianyuluntan.com/post/85.html" class="text-secondary text-decoration-none">剑鱼论坛的伪静态规则是什么？</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;FleTime&nbsp;发表于&nbsp;2020年01月21日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;69天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;7小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;1                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/data/avatar/d1/u_79.png" tppabs="http://jianyuluntan.com/data/avatar/d1/u_79.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>FleTime</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：56天前</h6>
+                            <h6>加入时间：69天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：0</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/data/avatar/fc/u_65.png" tppabs="http://jianyuluntan.com/data/avatar/fc/u_65.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/65.html" tppabs="http://jianyuluntan.com/post/65.html" class="text-secondary text-decoration-none">剑鱼论坛v1.0.0如何更新到v1.0.2?</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;加年&nbsp;发表于&nbsp;2019年12月31日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            加年&nbsp;回复于&nbsp;90天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;1天前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;1                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/data/avatar/fc/u_65.png" tppabs="http://jianyuluntan.com/data/avatar/fc/u_65.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>加年</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：10天前</h6>
+                            <h6>加入时间：90天前</h6>
+                            <h6>主帖：2&nbsp;&nbsp;跟帖：2</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="column/3.html" tppabs="http://jianyuluntan.com/column/3.html">剑鱼论坛</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="type/4.html" tppabs="http://jianyuluntan.com/type/4.html">求助</a>&nbsp;]</span>&nbsp;<a href="post/59.html" tppabs="http://jianyuluntan.com/post/59.html" class="text-secondary text-decoration-none">默认首页是/index.php/  打开是页面错误！请稍后再试～</a>                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;859d76&nbsp;发表于&nbsp;2019年12月26日
+                        <span class="d-none d-md-inline">
+                                                        &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            &nbsp;回复于&nbsp;94天前                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;7小时前                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;1                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="/static/public/common/images/avatar.png" tppabs="http://jianyuluntan.com/public/common/images/avatar.png" height="50" class="rounded-circle float-left mr-3">
+                            <h6>859d76</h6>
+                            <h6>LV&nbsp;1&nbsp;<span class="text-info">[出生]</span></h6>
+                            <h6>最后在线：95天前</h6>
+                            <h6>加入时间：95天前</h6>
+                            <h6>主帖：1&nbsp;&nbsp;跟帖：1</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <nav>
+                <ul class="pagination justify-content-center my-4">
+                    <li class="page-item disabled"><a class="page-link" href="#!" tabindex="-1">&laquo;</a></li> <li class="page-item active"><a class="page-link" href="#">1</a></li><li class="page-item"><a class="page-link" href="-order=&page=2.htm" tppabs="http://jianyuluntan.com/?order=&page=2">2</a></li><li class="page-item"><a class="page-link" href="-order=&page=3.htm" tppabs="http://jianyuluntan.com/?order=&page=3">3</a></li><li class="page-item"><a class="page-link" href="-order=&page=4.htm" tppabs="http://jianyuluntan.com/?order=&page=4">4</a></li><li class="page-item"><a class="page-link" href="-order=&page=5.htm" tppabs="http://jianyuluntan.com/?order=&page=5">5</a></li><li class="page-item"><a class="page-link" href="-order=&page=6.htm" tppabs="http://jianyuluntan.com/?order=&page=6">6</a></li> <li class="page-item"><a class="page-link" href="-order=&page=2.htm" tppabs="http://jianyuluntan.com/?order=&page=2">&raquo;</a></li>                </ul>
+            </nav>
+        </div>
+        <div class="col-md-3 pt-4">
+            <div>
+    <a class="btn btn-info btn-block btn-sm shadow" href="denglu.html" tppabs="http://jianyuluntan.com/user/index/index.html">发新帖</a>
+</div>
+<div>
+    <div class="card mt-3 border-0 shadow">
+        <div class="card-body">
+            <div class="row text-center text-muted">
+                <div class="col-4 col-md-6">
+                    论坛主帖<br>111                </div>
+                <div class="col-4 col-md-6">
+                    论坛跟帖<br>71                </div>
+                <div class="col-4 col-md-6">
+                    在线访客<br>2                </div>
+                <div class="col-4 col-md-6">
+                    今日主帖<br>0                </div>
+                <div class="col-4 col-md-6">
+                    今日跟帖<br>0                </div>
+                <div class="col-4 col-md-6">
+                    今日注册<br>0                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <form method="get" action="http://jianyuluntan.com/search.html">
+        <div class="input-group mt-3 shadow">
+            <input type="text" name="find" class="form-control border-0" placeholder="关键字">
+            <div class="input-group-append">
+                <button class="btn btn-outline-info border-0" type="submit">搜索</button>
+            </div>
+        </div>
+    </form>
+</div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pb-2 px-5">
+    <div class="row">
+        <div class="col">
+                    </div>
+    </div>
+</div>
+<div class="p-3 bg-light text-muted">
+    <div class="text-center">
+        <small>©&nbsp;2019&nbsp;-&nbsp;2020&nbsp;剑鱼论坛&nbsp;版权所有</small>
+    </div>
+    <div class="text-center">
+        <small>Powered by JianYuLunTan</small>
+    </div>
+    <div class="text-center">
+        <a target="_blank" href="javascript:if(confirm('http://shang.qq.com/wpa/qunwpa?idkey=ef820e074faa22153b90216e0e024e8ef90b5d5e9f422c8f63badf767b1c2f4d  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://shang.qq.com/wpa/qunwpa?idkey=ef820e074faa22153b90216e0e024e8ef90b5d5e9f422c8f63badf767b1c2f4d'" tppabs="http://shang.qq.com/wpa/qunwpa?idkey=ef820e074faa22153b90216e0e024e8ef90b5d5e9f422c8f63badf767b1c2f4d"><img border="0" src="../pub.idqqimg.com/wpa/images/group.png" tppabs="http://pub.idqqimg.com/wpa/images/group.png" alt="剑鱼论坛" title="剑鱼论坛"></a>976666861    </div>
+</div>
+<div class="d-none" id="feedbackurl">/feedback.html</div>
+<div class="d-none" id="isLogin">0</div>
+<div class="d-none" id="dengluurl">/adenglu.html</div>
+<div class="modal fade" id="jianyudenglu" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">请先登录<small>&nbsp;[&nbsp;没有账户，请先<a href="zhuce.html" tppabs="http://jianyuluntan.com/zhuce.html" class="text-info text-decoration-none">注册</a>&nbsp;]</small></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="dengluform">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" class="form-control" name="user" placeholder="用户名" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" class="form-control" name="pwd" placeholder="密码">
+                    </div>
+                                        <div class="form-group">
+                        <label>验证码</label>
+                        <div><img class="img-fluid" style="cursor: pointer;" src="captcha.html.png" tppabs="http://jianyuluntan.com/captcha.html" id="captcha" alt="captcha" />&nbsp;<a href="#!" id="resetcaptcha" class="text-info text-decoration-none">看不清</a></div>
+                        <input type="text" class="form-control" name="captcha" placeholder="验证码">
+                    </div>
+                                        <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember"> 记住我
+                        </label>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="denglu" class="btn btn-info">登录<i class="fa fa-refresh fa-spin ml-2 d-none"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div><a class="text-light" id="jianyuluntan" href="index.htm" tppabs="http://jianyuluntan.com/">剑鱼论坛</a><script src="/static/public/common/js/push.js" tppabs="http://jianyuluntan.com/public/common/js/push.js"></script></div>
+<script src="/static/public/theme/default/js/jianyu.js" tppabs="http://jianyuluntan.com/public/theme/default/js/jianyu.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends 'myadmin/empty_page.html' %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">账号安全</a></li>
+    <li class="breadcrumb-item active" aria-current="page">账号信息</li>
+</ol>
+<div class="row">
+	<div class="col-lg-12 col-xl-12 col-md-12 col-12 col-sm-12">
+		<div class="card">
+			<div class="card-header">
+				<h4>账号信息</h4>
+			</div>
+			<div class="card-body" style="height: 500px">
+				<div id="navs-vertical" style="height: 50px;">
+					<div style="width: 280px; height: 48px; float: left;">
+						<img src="/static/myadmin/assets/ico/pwd.png" width="48px" height="48px" style="float: left;">
+						<div style="width: 220px; height: 48px;">
+							<span style="font-size: 14px; color: #333; line-height: 24px;">登陆密码</span>
+							<span style="display: block; font-size: 12px; color: #999; line-height: 24px;">用于保护账号信息及登录的安全</span>
+						</div>
+					</div>
+					<a href="#" class="btn btn-lg btn-primary m-b-5 m-t-5" style="float: right;">修改密码</a>
+				</div>
+				<hr>
+				<div id="navs-vertical" style="height: 50px;">
+					<div style="width: 280px; height: 48px; float: left;">
+						<img src="/static/myadmin/assets/ico/email.png" width="48px" height="48px" style="float: left;">
+						<div style="width: 220px; height: 48px;">
+							<span style="font-size: 14px; color: #333; line-height: 24px;">邮箱绑定</span>
+							<span style="display: block; font-size: 12px; color: #999; line-height: 24px;">用于保护账号信息及登录的安全</span>
+						</div>
+					</div>
+					{% if not exist_email %}
+						<a href="#" class="btn btn-lg btn-primary m-b-5 m-t-5" style="float: right;">绑定邮箱</a>
+					{% else %}
+						<a href="#" class="btn m-b-5 m-t-5" style="float: right;">更改邮箱</a>
+					{% endif %}
+				</div>
+				<hr>
+				<div id="navs-vertical" style="height: 50px;">
+					<div style="width: 280px; height: 48px; float: left;">
+						<img src="/static/myadmin/assets/ico/phone.png" width="48px" height="48px" style="float: left;">
+						<div style="width: 220px; height: 48px;">
+							<span style="font-size: 14px; color: #333; line-height: 24px;">手机绑定</span>
+							<span style="display: block; font-size: 12px; color: #999; line-height: 24px;">用于保护账号信息及登录的安全</span>
+						</div>
+					</div>
+					{% if not exist_mobile %}
+						<a href="#" class="btn btn-lg btn-primary m-b-5 m-t-5" style="float: right;">绑定手机</a>
+					{% else %}
+						<a href="#" class="btn m-b-5 m-t-5" style="float: right;">更改手机号</a>
+					{% endif %}
+				</div>
+				<hr>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% load staticfiles %}
+{% load notifications_tags %}
+{% notifications_unread as unread_count %}
+
+<nav class="navbar navbar-expand-lg main-navbar">
+	<a class="header-brand" href="{% url 'home' %}">
+		<img src="/static/img/edu3.png" class="header-brand-img" alt="Kharna-Admin  logo">
+	</a>
+	<div class="form-inline mr-auto">
+		<ul class="navbar-nav mr-3" style = "text-align: center;list-style: none;">
+			<li style = "width: 200px;"><a href = "{% url 'lesson_index' %}" style = "font-size: 16px;">在线课堂</a></li>
+			<li style = "width: 200px;"><a href = "{% url 'forum_index' %}" style = "font-size: 16px;">英语论坛</a></li>
+			<li style = "width: 200px;"><a href = "{% url 'shop' %}" style = "font-size: 16px;">商城</a></li>
+			<li><a href = "{% url 'add_words' %}" style = "font-size: 16px;">单词量测试</a></li>
+			{% comment %} <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-md-none navsearch"><i class="ion ion-search"></i></a></li> {% endcomment %}
+		</ul>
+	</div>
+	<ul class="navbar-nav navbar-right">
+		{% if request.user.is_authenticated %}
+		<li class="dropdown dropdown-list-toggle">
+			<a href="{% url 'shop_cart' %}" class="notification-toggle nav-link-lg beep"><i class="cart"></i></a>
+		</li>
+		<li class="dropdown dropdown-list-toggle">
+			<a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep">
+				<i class="ion-ios-email-outline"></i>
+				{% if unread_count %}
+					<svg viewBox="0 0 8 8"
+						width="8px"
+						height="8px">
+						<circle cx="4"
+								cy="4"
+								r="4"
+								fill="#ff6b6b"
+								></circle>
+					</svg>
+				{% endif %}
+			</a>
+			<div class="dropdown-menu dropdown-list dropdown-menu-right">
+				<div class="dropdown-header">Messages
+					<div class="float-right">
+						<a href="{% url 'mail_mes' %}">View All</a>
+						{% if unread_count %}
+							<span class="badge badge-danger">{{ unread_count }}</span>
+						{% endif %}
+					</div>
+				</div>
+				<div class="dropdown-list-content">
+					<a href="#" class="dropdown-item dropdown-item-unread">
+						<img alt="image" src="/static/img/avatar.jpg" class="rounded-circle dropdown-item-img">
+						<div class="dropdown-item-desc">
+							<div class="dropdownmsg d-flex">
+								<div class="">
+									<b>Stewart Ball</b>
+									<p>Your template awesome</p>
+								</div>
+								<div class="time">6 hours ago</div>
+							</div>
+
+						</div>
+					</a>
+				</div>
+			</div>
+		</li>
+		{% endif %}
+		<li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
+			<img src="/static/img/avatar.jpg" alt="profile-user" class="rounded-circle w-32">
+			<div class="d-sm-none d-lg-inline-block">{{ request.user.get_username}}</div></a>
+			<div class="dropdown-menu dropdown-menu-right" id = "UserBar">
+				{% if request.user.is_authenticated %}
+					<a href="{% url 'myadmin_index' %}" class="dropdown-item has-icon">
+						<i class="ion ion-gear-a"></i> 设置
+					</a>
+					<a href="{% url 'logout' %}" class="dropdown-item has-icon">
+						<i class="ion-ios-redo"></i> 登出
+					</a>
+				{% else %}
+					<a href="{% url 'myadmin_login' %}" class="dropdown-item has-icon">
+						<i class="ion-ios-redo"></i> 登录
+					</a>
+					<a href="{% url 'myadmin_register' %}" class="dropdown-item has-icon">
+						<i class="ion-ios-redo"></i> 注册
+					</a>
+				{% endif %}
+			</div>
+		</li>
+	</ul>
+</nav>
+<style type="text/css">
+	.cart{
+		display: inline-block;
+		background-image: url({% static "img/cart.png" %});
+		width: 30px;
+		height: 52px;
+		background-size: 18px 24px;
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+</style>

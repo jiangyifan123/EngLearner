@@ -1,0 +1,57 @@
+{% extends 'mainsys/empty_page.html' %}
+
+{% block content %}
+<div style = "padding: 5px 100px 100px;"></div>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Forms</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Advanced Form Elements</li>
+</ol>
+<div class="row">
+    <div class="col-12">
+        <div class="card" style = "heigh: 500px;">
+            <div class="card-header">
+                <h4>File Upload</h4>
+            </div>
+            <div class="card-body" style = "heigh: 400px;">
+                <form method="POST" action="{% url 'set_words' %}" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group overflow-hidden">
+                        <label>Minimal</label>
+                        <select class="form-control select2 w-100 select2-hidden-accessible" tabindex="-1" aria-hidden="true" name = "type">
+                            <option selected="selected" value = "四级">四级</option>
+                            <option value = "六级">六级</option>
+                            <option value = "托福">托福</option>
+                            <option value = "GRE">GRE</option>
+                            <option value = "雅思">雅思</option>
+                            <option value = "考研">考研</option>
+                            <option value = "SAT">SAT</option>
+                        </select>
+                    </div>
+                </div>
+                    <div class="col-md-9">
+                        <label class="col-md-3 col-form-label">单词表名字</label>
+                        <input type="text" class="form-control" value="" name = "product_name">
+                    </div>
+                    <div class="col-md-9">
+                        <label class="col-md-3 col-form-label">单词表价格</label>
+                        <input class="form-control" type="number" name="product_price">
+                    </div>
+                    <div class="col-md-9">
+                        <label class="col-md-3 col-form-label">单词表描述</label>
+                        <input type="text" class="form-control" value="" name = "product_description">
+                    </div>
+                    <div class="col-lg-12" style = "text-align: center">
+                            <div class="form-group files mb-lg-0">
+                                <input type="file" class="form-control1" multiple="" name = "excel">
+                            </div>
+                            <input type="submit" value="提交" class = "btn btn-primary m-b-5 m-t-5"/>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
